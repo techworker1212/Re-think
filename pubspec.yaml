@@ -1,0 +1,22 @@
+name: re_think
+description: Per-app time limits with a 5-second custom warning, then a pause screen.
+publish_to: "none"
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.13.5
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.8
+  shared_preferences: ^2.5.3
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+  pigeon: ^26.1.5
+
+flutter:
+  uses-material-design: true
