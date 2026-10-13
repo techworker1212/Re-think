@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Recenter Support</title>
+<meta name="description" content="Help with Recenter: setting limits, reminders, unlocking apps, and Screen Time permission.">
+<style>
+  :root { --bg: #ffffff; --text: #1c1c1e; --muted: #5f5e5a; --accent: #0F766E; --rule: #e5e3dc; --card: #f6f5f1; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #161615; --text: #f1efe8; --muted: #b4b2a9; --accent: #5DCAA5; --rule: #2c2c2a; --card: #1f1f1e; }
+  }
+  body { margin: 0; background: var(--bg); color: var(--text);
+         font: 17px/1.65 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+  main { max-width: 680px; margin: 0 auto; padding: 48px 16px 64px; }
+  .brand { display: flex; align-items: center; gap: 12px; margin-bottom: 32px; }
+  .brand svg { width: 44px; height: 44px; border-radius: 10px; flex: none; }
+  .brand span { font-weight: 600; font-size: 20px; }
+  h1 { font-size: 30px; line-height: 1.25; margin: 0 0 8px; }
+  h2 { font-size: 20px; margin: 36px 0 12px; }
+  .meta { color: var(--muted); margin: 0 0 24px; }
+  .contact { background: var(--card); border-radius: 12px; padding: 16px 18px; margin: 0 0 8px; }
+  .contact p { margin: 0; }
+  details { border-bottom: 1px solid var(--rule); padding: 14px 0; }
+  summary { cursor: pointer; font-weight: 600; }
+  details p, details ul { margin: 10px 0 0; }
+  a { color: var(--accent); }
+  ul { padding-left: 22px; }
+  footer { margin-top: 48px; padding-top: 16px; border-top: 1px solid var(--rule); color: var(--muted); font-size: 15px; }
+</style>
+</head>
+<body>
+<main>
+  <div class="brand">
+    <svg viewBox="0 0 1024 1024" aria-hidden="true">
+      <rect width="1024" height="1024" fill="#0F766E"/>
+      <circle cx="430" cy="430" r="250" fill="none" stroke="#fff" stroke-opacity=".28" stroke-width="44"/>
+      <circle cx="512" cy="512" r="250" fill="none" stroke="#fff" stroke-width="56"/>
+      <circle cx="512" cy="512" r="92" fill="#F5E6C8"/>
+    </svg>
+    <span>Recenter</span>
+  </div>
+
+  <h1>Support</h1>
+  <p class="meta">Help with setting limits, reminders and unlocking apps.</p>
+
+  <div class="contact">
+    <p><strong>Need help or found a bug?</strong> Email
+    <a href="mailto:techworker1212@gmail.com?subject=Recenter%20support">techworker1212@gmail.com</a>.
+    Tell us your iPhone model and iOS version, and what you expected to happen. We usually reply
+    within a few days.</p>
+  </div>
+
+  <h2>Common questions</h2>
+
+  <details open>
+    <summary>Why does Recenter need Screen Time access?</summary>
+    <p>Apple only lets apps measure time in other apps and pause them through Screen Time. Recenter
+    asks for it once, and you confirm with your iPhone passcode. It only sees the apps you choose,
+    as anonymous tokens. It never sees app names or what you do inside them. See the
+    <a href="privacy.html">privacy policy</a>.</p>
+  </details>
+
+  <details>
+    <summary>Why do I have to type a name for the app I picked?</summary>
+    <p>To protect your privacy, Apple doesn't tell Recenter which app you picked. The name you type,
+    such as "Instagram", is only used inside Recenter so you can recognise your rules.</p>
+  </details>
+
+  <details>
+    <summary>How is my time counted?</summary>
+    <p>On iPhone, Recenter counts your <strong>total time in that app during the day</strong>, not one
+    sitting. Closing and reopening the app doesn't reset it. The count starts when you turn on
+    monitoring or save the rule, and then resets each day.</p>
+  </details>
+
+  <details>
+    <summary>My reminder didn't appear, or it was late</summary>
+    <ul>
+      <li>Check that <strong>Monitoring</strong> is on in Recenter and that the rule's switch is on.</li>
+      <li>Check that notifications are allowed: <em>Settings → Notifications → Recenter</em>.</li>
+      <li>Check that Screen Time access is on: <em>Settings → Screen Time → Apps With Screen Time Access</em>.</li>
+      <li>iOS decides exactly when to report usage, so the reminder can sometimes arrive a minute or so
+        after your limit. This is normal.</li>
+    </ul>
+  </details>
+
+  <details>
+    <summary>How do I unlock an app that Recenter paused?</summary>
+    <p>On the pause screen, tap <strong>Unlock</strong>. The app opens again for your cool-down time
+    (2 minutes by default), and then Recenter checks in again. You can change the cool-down in
+    Recenter's <strong>Settings</strong>.</p>
+  </details>
+
+  <details>
+    <summary>How do I change or remove a limit?</summary>
+    <ul>
+      <li>To edit the limit or reminder, tap the rule on Recenter's home screen.</li>
+      <li>To turn a rule off, use the switch next to it.</li>
+      <li>To delete a rule, tap the bin icon.</li>
+      <li>To turn everything off, switch off <strong>Monitoring</strong>.</li>
+    </ul>
+  </details>
+
+  <details>
+    <summary>How do I stop using Recenter completely?</summary>
+    <p>Turn off Monitoring, then delete the app. Deleting Recenter removes its limits and all its data
+    from your iPhone. You can also turn off its access in
+    <em>Settings → Screen Time → Apps With Screen Time Access</em>.</p>
+  </details>
+
+  <footer>© 2026 Techworker · Recenter · <a href="privacy.html">Privacy policy</a></footer>
+</main>
+</body>
+</html>

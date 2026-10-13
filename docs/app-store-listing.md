@@ -64,6 +64,6 @@ First release of Recenter. Set a time limit and your own reminder for any app, t
 | Age rating | 4+ (no objectionable content) |
 | Price | Free |
 | Privacy policy URL | https://techworker1212.github.io/Recenter/privacy.html |
-| Support URL | https://techworker1212.github.io/Recenter/ (add a support page before submitting) |
+| Support URL | https://techworker1212.github.io/Recenter/support.html |
 | App Privacy answer | "No, we do not collect data from this app" → Data Not Collected |
 | Copyright | © 2026 Techworker |
