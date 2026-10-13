@@ -123,7 +123,7 @@ class PauseActivity : Activity() {
 
         root.addView(
             TextView(this).apply {
-                text = "Re-think"
+                text = "Recenter"
                 setTextColor(0xB3FFFFFF.toInt())
                 setTextSize(TypedValue.COMPLEX_UNIT_SP, 14f)
             },

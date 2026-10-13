@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Mirrors rethinkTeal in lib/theme.dart. -->
+    <!-- Mirrors recenterTeal in lib/theme.dart. -->
     <color name="rethink_teal">#0F766E</color>
     <color name="rethink_pause_background">#1C1C1E</color>
 </resources>

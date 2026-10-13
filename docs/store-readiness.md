@@ -1,4 +1,4 @@
-# Store readiness
+# Store readiness — Recenter
 
 Nothing here has been submitted. This is the checklist for when you're ready.
 
@@ -6,10 +6,10 @@ Nothing here has been submitted. This is the checklist for when you're ready.
 
 | Thing | Value |
 | --- | --- |
-| iOS bundle ID | `com.aquibkhan.rethink` |
-| Android applicationId | `com.rethink.app` (check it is free on Play before publishing) |
-| iOS extensions | `com.aquibkhan.rethink.DeviceActivityMonitor`, `.ShieldConfiguration`, `.ShieldAction` |
-| App Group (app + all 3 extensions) | `group.com.aquibkhan.rethink` |
+| iOS bundle ID | `com.aquibkhan.recenter` |
+| Android applicationId | `com.aquibkhan.recenter` |
+| iOS extensions | `com.aquibkhan.recenter.DeviceActivityMonitor`, `.ShieldConfiguration`, `.ShieldAction` |
+| App Group (app + all 3 extensions) | `group.com.aquibkhan.recenter` |
 | Minimum OS | iOS 16, Android 10 (API 29) |
 
 ## Apple (App Store)
@@ -19,10 +19,10 @@ Nothing here has been submitted. This is the checklist for when you're ready.
    4 bundle IDs above. Approval takes days to weeks. Development builds on a device work without it;
    TestFlight and the App Store don't.
 2. In Certificates, Identifiers & Profiles, register all 4 bundle IDs and turn on
-   **Family Controls** and **App Groups** (`group.com.aquibkhan.rethink`) for each one.
+   **Family Controls** and **App Groups** (`group.com.aquibkhan.recenter`) for each one.
 3. In Xcode, set the Team on all 4 targets (Runner, DeviceActivityMonitor, ShieldConfiguration,
    ShieldAction). The entitlements files are already in place.
-4. App Review notes: explain that Re-think uses Screen Time (individual authorization) only to
+4. App Review notes: explain that Recenter uses Screen Time (individual authorization) only to
    watch apps the user picks, show the user's own reminder, and shield those apps. There is no
    account, no server, and no data leaves the device.
 5. Privacy nutrition label: **Data Not Collected**.

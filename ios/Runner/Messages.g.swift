@@ -452,7 +452,7 @@ class MessagesPigeonCodec: FlutterStandardMessageCodec, @unchecked Sendable {
 
 
 /// Generated protocol from Pigeon that represents a handler of messages from Flutter.
-protocol ReThinkHostApi {
+protocol RecenterHostApi {
   func getPermissionStatus() throws -> PermissionSnapshot
   func requestPermission(kind: String, completion: @escaping (Result<PermissionSnapshot, Error>) -> Void)
   func upsertAppRule(rule: NativeAppRule) throws
@@ -467,12 +467,12 @@ protocol ReThinkHostApi {
 }
 
 /// Generated setup class from Pigeon to handle messages through the `binaryMessenger`.
-class ReThinkHostApiSetup {
+class RecenterHostApiSetup {
   static var codec: FlutterStandardMessageCodec { MessagesPigeonCodec.shared }
-  /// Sets up an instance of `ReThinkHostApi` to handle messages through the `binaryMessenger`.
-  static func setUp(binaryMessenger: FlutterBinaryMessenger, api: ReThinkHostApi?, messageChannelSuffix: String = "") {
+  /// Sets up an instance of `RecenterHostApi` to handle messages through the `binaryMessenger`.
+  static func setUp(binaryMessenger: FlutterBinaryMessenger, api: RecenterHostApi?, messageChannelSuffix: String = "") {
     let channelSuffix = messageChannelSuffix.count > 0 ? ".\(messageChannelSuffix)" : ""
-    let getPermissionStatusChannel = FlutterBasicMessageChannel(name: "dev.flutter.pigeon.re_think.ReThinkHostApi.getPermissionStatus\(channelSuffix)", binaryMessenger: binaryMessenger, codec: codec)
+    let getPermissionStatusChannel = FlutterBasicMessageChannel(name: "dev.flutter.pigeon.re_think.RecenterHostApi.getPermissionStatus\(channelSuffix)", binaryMessenger: binaryMessenger, codec: codec)
     if let api = api {
       getPermissionStatusChannel.setMessageHandler { _, reply in
         do {
@@ -485,7 +485,7 @@ class ReThinkHostApiSetup {
     } else {
       getPermissionStatusChannel.setMessageHandler(nil)
     }
-    let requestPermissionChannel = FlutterBasicMessageChannel(name: "dev.flutter.pigeon.re_think.ReThinkHostApi.requestPermission\(channelSuffix)", binaryMessenger: binaryMessenger, codec: codec)
+    let requestPermissionChannel = FlutterBasicMessageChannel(name: "dev.flutter.pigeon.re_think.RecenterHostApi.requestPermission\(channelSuffix)", binaryMessenger: binaryMessenger, codec: codec)
     if let api = api {
       requestPermissionChannel.setMessageHandler { message, reply in
         let args = message as! [Any?]
@@ -502,7 +502,7 @@ class ReThinkHostApiSetup {
     } else {
       requestPermissionChannel.setMessageHandler(nil)
     }
-    let upsertAppRuleChannel = FlutterBasicMessageChannel(name: "dev.flutter.pigeon.re_think.ReThinkHostApi.upsertAppRule\(channelSuffix)", binaryMessenger: binaryMessenger, codec: codec)
+    let upsertAppRuleChannel = FlutterBasicMessageChannel(name: "dev.flutter.pigeon.re_think.RecenterHostApi.upsertAppRule\(channelSuffix)", binaryMessenger: binaryMessenger, codec: codec)
     if let api = api {
       upsertAppRuleChannel.setMessageHandler { message, reply in
         let args = message as! [Any?]
@@ -517,7 +517,7 @@ class ReThinkHostApiSetup {
     } else {
       upsertAppRuleChannel.setMessageHandler(nil)
     }
-    let deleteAppRuleChannel = FlutterBasicMessageChannel(name: "dev.flutter.pigeon.re_think.ReThinkHostApi.deleteAppRule\(channelSuffix)", binaryMessenger: binaryMessenger, codec: codec)
+    let deleteAppRuleChannel = FlutterBasicMessageChannel(name: "dev.flutter.pigeon.re_think.RecenterHostApi.deleteAppRule\(channelSuffix)", binaryMessenger: binaryMessenger, codec: codec)
     if let api = api {
       deleteAppRuleChannel.setMessageHandler { message, reply in
         let args = message as! [Any?]
@@ -532,7 +532,7 @@ class ReThinkHostApiSetup {
     } else {
       deleteAppRuleChannel.setMessageHandler(nil)
     }
-    let startMonitoringChannel = FlutterBasicMessageChannel(name: "dev.flutter.pigeon.re_think.ReThinkHostApi.startMonitoring\(channelSuffix)", binaryMessenger: binaryMessenger, codec: codec)
+    let startMonitoringChannel = FlutterBasicMessageChannel(name: "dev.flutter.pigeon.re_think.RecenterHostApi.startMonitoring\(channelSuffix)", binaryMessenger: binaryMessenger, codec: codec)
     if let api = api {
       startMonitoringChannel.setMessageHandler { _, reply in
         do {
@@ -545,7 +545,7 @@ class ReThinkHostApiSetup {
     } else {
       startMonitoringChannel.setMessageHandler(nil)
     }
-    let stopMonitoringChannel = FlutterBasicMessageChannel(name: "dev.flutter.pigeon.re_think.ReThinkHostApi.stopMonitoring\(channelSuffix)", binaryMessenger: binaryMessenger, codec: codec)
+    let stopMonitoringChannel = FlutterBasicMessageChannel(name: "dev.flutter.pigeon.re_think.RecenterHostApi.stopMonitoring\(channelSuffix)", binaryMessenger: binaryMessenger, codec: codec)
     if let api = api {
       stopMonitoringChannel.setMessageHandler { _, reply in
         do {
@@ -558,7 +558,7 @@ class ReThinkHostApiSetup {
     } else {
       stopMonitoringChannel.setMessageHandler(nil)
     }
-    let getMonitoringStatusChannel = FlutterBasicMessageChannel(name: "dev.flutter.pigeon.re_think.ReThinkHostApi.getMonitoringStatus\(channelSuffix)", binaryMessenger: binaryMessenger, codec: codec)
+    let getMonitoringStatusChannel = FlutterBasicMessageChannel(name: "dev.flutter.pigeon.re_think.RecenterHostApi.getMonitoringStatus\(channelSuffix)", binaryMessenger: binaryMessenger, codec: codec)
     if let api = api {
       getMonitoringStatusChannel.setMessageHandler { _, reply in
         do {
@@ -571,7 +571,7 @@ class ReThinkHostApiSetup {
     } else {
       getMonitoringStatusChannel.setMessageHandler(nil)
     }
-    let listInstalledAppsChannel = FlutterBasicMessageChannel(name: "dev.flutter.pigeon.re_think.ReThinkHostApi.listInstalledApps\(channelSuffix)", binaryMessenger: binaryMessenger, codec: codec)
+    let listInstalledAppsChannel = FlutterBasicMessageChannel(name: "dev.flutter.pigeon.re_think.RecenterHostApi.listInstalledApps\(channelSuffix)", binaryMessenger: binaryMessenger, codec: codec)
     if let api = api {
       listInstalledAppsChannel.setMessageHandler { _, reply in
         do {
@@ -584,7 +584,7 @@ class ReThinkHostApiSetup {
     } else {
       listInstalledAppsChannel.setMessageHandler(nil)
     }
-    let pickIosActivityChannel = FlutterBasicMessageChannel(name: "dev.flutter.pigeon.re_think.ReThinkHostApi.pickIosActivity\(channelSuffix)", binaryMessenger: binaryMessenger, codec: codec)
+    let pickIosActivityChannel = FlutterBasicMessageChannel(name: "dev.flutter.pigeon.re_think.RecenterHostApi.pickIosActivity\(channelSuffix)", binaryMessenger: binaryMessenger, codec: codec)
     if let api = api {
       pickIosActivityChannel.setMessageHandler { _, reply in
         api.pickIosActivity { result in
@@ -599,7 +599,7 @@ class ReThinkHostApiSetup {
     } else {
       pickIosActivityChannel.setMessageHandler(nil)
     }
-    let unlockAppChannel = FlutterBasicMessageChannel(name: "dev.flutter.pigeon.re_think.ReThinkHostApi.unlockApp\(channelSuffix)", binaryMessenger: binaryMessenger, codec: codec)
+    let unlockAppChannel = FlutterBasicMessageChannel(name: "dev.flutter.pigeon.re_think.RecenterHostApi.unlockApp\(channelSuffix)", binaryMessenger: binaryMessenger, codec: codec)
     if let api = api {
       unlockAppChannel.setMessageHandler { message, reply in
         let args = message as! [Any?]
@@ -614,7 +614,7 @@ class ReThinkHostApiSetup {
     } else {
       unlockAppChannel.setMessageHandler(nil)
     }
-    let saveSettingsChannel = FlutterBasicMessageChannel(name: "dev.flutter.pigeon.re_think.ReThinkHostApi.saveSettings\(channelSuffix)", binaryMessenger: binaryMessenger, codec: codec)
+    let saveSettingsChannel = FlutterBasicMessageChannel(name: "dev.flutter.pigeon.re_think.RecenterHostApi.saveSettings\(channelSuffix)", binaryMessenger: binaryMessenger, codec: codec)
     if let api = api {
       saveSettingsChannel.setMessageHandler { message, reply in
         let args = message as! [Any?]

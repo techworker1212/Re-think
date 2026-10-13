@@ -14,7 +14,7 @@ class MainActivity : FlutterActivity() {
 
     override fun configureFlutterEngine(flutterEngine: FlutterEngine) {
         super.configureFlutterEngine(flutterEngine)
-        ReThinkHostApi.setUp(flutterEngine.dartExecutor.binaryMessenger, HostApi())
+        RecenterHostApi.setUp(flutterEngine.dartExecutor.binaryMessenger, HostApi())
     }
 
     override fun onResume() {
@@ -71,7 +71,7 @@ class MainActivity : FlutterActivity() {
         startActivity(settingsIntent)
     }
 
-    private inner class HostApi : ReThinkHostApi {
+    private inner class HostApi : RecenterHostApi {
         private val store = RuleStore(this@MainActivity)
 
         override fun getPermissionStatus() = Permissions.snapshot(this@MainActivity)
@@ -105,7 +105,7 @@ class MainActivity : FlutterActivity() {
             if (!Permissions.hasUsageAccess(this@MainActivity)) {
                 throw FlutterError(
                     "usage_access",
-                    "Turn on Usage Access so Re-think can see which app is open.",
+                    "Turn on Usage Access so Recenter can see which app is open.",
                 )
             }
             MonitorService.start(this@MainActivity)

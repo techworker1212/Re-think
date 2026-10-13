@@ -54,7 +54,7 @@ class SettingsScreen extends StatelessWidget {
               ),
               const SizedBox(height: 12),
               const Text(
-                'Rules, notification copy, and usage stay on this device. Re-think has no account and no backend.',
+                'Rules, notification copy, and usage stay on this device. Recenter has no account and no backend.',
               ),
             ],
           ),

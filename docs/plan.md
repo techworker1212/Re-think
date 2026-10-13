@@ -195,3 +195,15 @@ Website blocking, parental/child Family Sharing, accounts/sync, Android Accessib
 1. Submit the Family Controls **distribution** request for the 4 `com.aquibkhan.rethink*` bundle IDs.
 2. App icon, privacy policy URL, store screenshots.
 3. TestFlight once distribution is approved.
+
+## Update (2026-10-12): renamed to Recenter
+- "Re-think", "Reset", "Retime", "Pause", "Break", "Instead", "Wellspent" and others were already
+  used by screen-time apps. **Recenter** came up clear in App Store searches. Still reserve it in
+  App Store Connect (Apps → + → New App) to make it official.
+- iOS bundle ID: `com.aquibkhan.recenter` (+ `.DeviceActivityMonitor`, `.ShieldConfiguration`,
+  `.ShieldAction`). App Group: `group.com.aquibkhan.recenter`. Android applicationId:
+  `com.aquibkhan.recenter`.
+- Kept as-is on purpose (never seen by users): the folder and Dart package `re_think`, the Kotlin
+  package `com.rethink.app`, and the stored-data keys.
+- Earlier `com.aquibkhan.rethink*` entries in this file are historical. The Family Controls
+  distribution request should use the **recenter** IDs.

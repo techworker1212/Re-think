@@ -11,8 +11,8 @@ void main() {
       notificationTitle: '',
       notificationBody: '  ',
     );
-    expect(rule.resolvedTitle, AppRule.fallbackCopy);
-    expect(rule.resolvedBody, AppRule.fallbackCopy);
+    expect(rule.resolvedTitle, AppRule.fallbackTitle);
+    expect(rule.resolvedBody, AppRule.fallbackBody);
   });
 
   test('custom copy is used when present', () {

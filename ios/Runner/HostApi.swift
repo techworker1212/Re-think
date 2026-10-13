@@ -7,7 +7,7 @@ import UserNotifications
 
 /// iOS side of the Pigeon bridge: Family Controls auth, the app picker, and arming
 /// one DeviceActivity monitor per rule.
-final class HostApi: ReThinkHostApi {
+final class HostApi: RecenterHostApi {
   private let store = RuleStore.shared
   private var notificationsAuthorized = false
 
@@ -74,7 +74,7 @@ final class HostApi: ReThinkHostApi {
     guard AuthorizationCenter.shared.authorizationStatus == .approved else {
       throw PigeonError(
         code: "family_controls",
-        message: "Allow Screen Time access so Re-think can watch the apps you picked.",
+        message: "Allow Screen Time access so Recenter can watch the apps you picked.",
         details: nil
       )
     }

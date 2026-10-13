@@ -21,7 +21,7 @@ object Notifications {
                 CHANNEL_MONITOR,
                 "Monitoring",
                 NotificationManager.IMPORTANCE_MIN,
-            ).apply { description = "Shown while Re-think is watching your selected apps." },
+            ).apply { description = "Shown while Recenter is watching your selected apps." },
         )
         manager.createNotificationChannel(
             NotificationChannel(
@@ -34,13 +34,13 @@ object Notifications {
 
     fun monitoring(context: Context, ruleCount: Int, usageAccess: Boolean): Notification {
         val text = when {
-            !usageAccess -> "Usage access is off. Open Re-think to turn it on."
+            !usageAccess -> "Usage access is off. Open Recenter to turn it on."
             ruleCount == 1 -> "Watching 1 app"
             else -> "Watching $ruleCount apps"
         }
         return Notification.Builder(context, CHANNEL_MONITOR)
             .setSmallIcon(R.drawable.ic_stat_rethink)
-            .setContentTitle("Re-think is on")
+            .setContentTitle("Recenter is on")
             .setContentText(text)
             .setOngoing(true)
             .setShowWhen(false)

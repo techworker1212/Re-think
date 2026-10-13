@@ -75,7 +75,7 @@ class NativeSettings {
 }
 
 @HostApi()
-abstract class ReThinkHostApi {
+abstract class RecenterHostApi {
   PermissionSnapshot getPermissionStatus();
 
   @async

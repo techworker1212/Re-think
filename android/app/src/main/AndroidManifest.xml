@@ -13,7 +13,7 @@
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
     <application
-        android:label="Re-think"
+        android:label="Recenter"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
@@ -40,7 +40,7 @@
         </activity>
 
         <!-- The "locked" screen shown over a blocked app. Separate task so it
-             never mixes with the Re-think UI back stack. -->
+             never mixes with the Recenter UI back stack. -->
         <activity
             android:name=".PauseActivity"
             android:exported="false"

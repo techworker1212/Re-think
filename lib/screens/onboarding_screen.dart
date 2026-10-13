@@ -20,15 +20,15 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     if (Platform.isIOS) {
       return const [
         _OnboardingPage(
-          title: 'Re-think pauses one app at a time',
+          title: 'Recenter pauses one app at a time',
           body:
-              'When a selected app hits its limit, iOS shows your custom reminder for five seconds, then a Screen Time shield. Re-think cannot lock the whole phone.',
+              'When a selected app hits its limit, iOS shows your custom reminder for five seconds, then a Screen Time shield. Recenter cannot lock the whole phone.',
           kind: null,
         ),
         _OnboardingPage(
           title: 'Screen Time access',
           body:
-              'Family Controls lets Re-think watch only the apps you pick and shield them when time is up. This stays on your device.',
+              'Family Controls lets Recenter watch only the apps you pick and shield them when time is up. This stays on your device.',
           kind: 'familyControls',
         ),
         _OnboardingPage(
@@ -41,15 +41,15 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     }
     return const [
       _OnboardingPage(
-        title: 'Re-think pauses one app at a time',
+        title: 'Recenter pauses one app at a time',
         body:
-            'When a selected app hits its limit, Android shows your custom reminder for five seconds, then a full-screen pause. Re-think cannot lock the hardware lock screen.',
+            'When a selected app hits its limit, Android shows your custom reminder for five seconds, then a full-screen pause. Recenter cannot lock the hardware lock screen.',
         kind: null,
       ),
       _OnboardingPage(
         title: 'Usage access',
         body:
-            'Re-think reads which app is in the foreground so it can apply that app’s limit. Usage data never leaves this device. This is not an accessibility tool.',
+            'Recenter reads which app is in the foreground so it can apply that app’s limit. Usage data never leaves this device. This is not an accessibility tool.',
         kind: 'usageAccess',
       ),
       _OnboardingPage(
@@ -61,13 +61,13 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       _OnboardingPage(
         title: 'Display over other apps',
         body:
-            'Needed so the pause screen can appear over Instagram, TikTok, and other apps after the warning. You can deny this and Re-think will still try a full-screen notification.',
+            'Needed so the pause screen can appear over Instagram, TikTok, and other apps after the warning. You can deny this and Recenter will still try a full-screen notification.',
         kind: 'overlay',
       ),
       _OnboardingPage(
-        title: 'Keep Re-think running',
+        title: 'Keep Recenter running',
         body:
-            'Some phones stop background apps to save battery. Choose "Don\u2019t optimize" for Re-think so limits keep working after a while.',
+            'Some phones stop background apps to save battery. Choose "Don\u2019t optimize" for Recenter so limits keep working after a while.',
         kind: 'battery',
       ),
     ];
@@ -97,7 +97,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'Re-think',
+                'Recenter',
                 style: Theme.of(context).textTheme.headlineMedium?.copyWith(
                   fontWeight: FontWeight.w700,
                 ),

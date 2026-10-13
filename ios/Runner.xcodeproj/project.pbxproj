@@ -654,7 +654,7 @@
 				);
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				DEVELOPMENT_TEAM = NC7A2HC4R5;
-				PRODUCT_BUNDLE_IDENTIFIER = com.aquibkhan.rethink;
+				PRODUCT_BUNDLE_IDENTIFIER = com.aquibkhan.recenter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
@@ -671,7 +671,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
 				DEVELOPMENT_TEAM = NC7A2HC4R5;
-				PRODUCT_BUNDLE_IDENTIFIER = com.aquibkhan.rethink.RunnerTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.aquibkhan.recenter.RunnerTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -689,7 +689,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
 				DEVELOPMENT_TEAM = NC7A2HC4R5;
-				PRODUCT_BUNDLE_IDENTIFIER = com.aquibkhan.rethink.RunnerTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.aquibkhan.recenter.RunnerTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Runner.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Runner";
@@ -705,7 +705,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
 				DEVELOPMENT_TEAM = NC7A2HC4R5;
-				PRODUCT_BUNDLE_IDENTIFIER = com.aquibkhan.rethink.RunnerTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.aquibkhan.recenter.RunnerTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Runner.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Runner";
@@ -840,7 +840,7 @@
 				);
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				DEVELOPMENT_TEAM = NC7A2HC4R5;
-				PRODUCT_BUNDLE_IDENTIFIER = com.aquibkhan.rethink;
+				PRODUCT_BUNDLE_IDENTIFIER = com.aquibkhan.recenter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -864,7 +864,7 @@
 				);
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				DEVELOPMENT_TEAM = NC7A2HC4R5;
-				PRODUCT_BUNDLE_IDENTIFIER = com.aquibkhan.rethink;
+				PRODUCT_BUNDLE_IDENTIFIER = com.aquibkhan.recenter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
@@ -890,7 +890,7 @@
 				);
 				MARKETING_VERSION = "$(FLUTTER_BUILD_NAME)";
 				DEVELOPMENT_TEAM = NC7A2HC4R5;
-				PRODUCT_BUNDLE_IDENTIFIER = com.aquibkhan.rethink.DeviceActivityMonitor;
+				PRODUCT_BUNDLE_IDENTIFIER = com.aquibkhan.recenter.DeviceActivityMonitor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
@@ -918,7 +918,7 @@
 				);
 				MARKETING_VERSION = "$(FLUTTER_BUILD_NAME)";
 				DEVELOPMENT_TEAM = NC7A2HC4R5;
-				PRODUCT_BUNDLE_IDENTIFIER = com.aquibkhan.rethink.DeviceActivityMonitor;
+				PRODUCT_BUNDLE_IDENTIFIER = com.aquibkhan.recenter.DeviceActivityMonitor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
@@ -946,7 +946,7 @@
 				);
 				MARKETING_VERSION = "$(FLUTTER_BUILD_NAME)";
 				DEVELOPMENT_TEAM = NC7A2HC4R5;
-				PRODUCT_BUNDLE_IDENTIFIER = com.aquibkhan.rethink.DeviceActivityMonitor;
+				PRODUCT_BUNDLE_IDENTIFIER = com.aquibkhan.recenter.DeviceActivityMonitor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
@@ -974,7 +974,7 @@
 				);
 				MARKETING_VERSION = "$(FLUTTER_BUILD_NAME)";
 				DEVELOPMENT_TEAM = NC7A2HC4R5;
-				PRODUCT_BUNDLE_IDENTIFIER = com.aquibkhan.rethink.ShieldConfiguration;
+				PRODUCT_BUNDLE_IDENTIFIER = com.aquibkhan.recenter.ShieldConfiguration;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
@@ -1002,7 +1002,7 @@
 				);
 				MARKETING_VERSION = "$(FLUTTER_BUILD_NAME)";
 				DEVELOPMENT_TEAM = NC7A2HC4R5;
-				PRODUCT_BUNDLE_IDENTIFIER = com.aquibkhan.rethink.ShieldConfiguration;
+				PRODUCT_BUNDLE_IDENTIFIER = com.aquibkhan.recenter.ShieldConfiguration;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
@@ -1030,7 +1030,7 @@
 				);
 				MARKETING_VERSION = "$(FLUTTER_BUILD_NAME)";
 				DEVELOPMENT_TEAM = NC7A2HC4R5;
-				PRODUCT_BUNDLE_IDENTIFIER = com.aquibkhan.rethink.ShieldConfiguration;
+				PRODUCT_BUNDLE_IDENTIFIER = com.aquibkhan.recenter.ShieldConfiguration;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
@@ -1058,7 +1058,7 @@
 				);
 				MARKETING_VERSION = "$(FLUTTER_BUILD_NAME)";
 				DEVELOPMENT_TEAM = NC7A2HC4R5;
-				PRODUCT_BUNDLE_IDENTIFIER = com.aquibkhan.rethink.ShieldAction;
+				PRODUCT_BUNDLE_IDENTIFIER = com.aquibkhan.recenter.ShieldAction;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
@@ -1086,7 +1086,7 @@
 				);
 				MARKETING_VERSION = "$(FLUTTER_BUILD_NAME)";
 				DEVELOPMENT_TEAM = NC7A2HC4R5;
-				PRODUCT_BUNDLE_IDENTIFIER = com.aquibkhan.rethink.ShieldAction;
+				PRODUCT_BUNDLE_IDENTIFIER = com.aquibkhan.recenter.ShieldAction;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
@@ -1114,7 +1114,7 @@
 				);
 				MARKETING_VERSION = "$(FLUTTER_BUILD_NAME)";
 				DEVELOPMENT_TEAM = NC7A2HC4R5;
-				PRODUCT_BUNDLE_IDENTIFIER = com.aquibkhan.rethink.ShieldAction;
+				PRODUCT_BUNDLE_IDENTIFIER = com.aquibkhan.recenter.ShieldAction;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";

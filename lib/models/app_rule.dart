@@ -1,5 +1,6 @@
 class AppRule {
-  static const fallbackCopy = "Re-think — time's up on this app.";
+  static const fallbackTitle = 'Time to recenter.';
+  static const fallbackBody = "You've reached the limit you set for this app.";
   static const titleMax = 50;
   static const bodyMax = 120;
 
@@ -24,7 +25,7 @@ class AppRule {
   String get resolvedTitle {
     final title = notificationTitle.trim();
     if (title.isEmpty) {
-      return fallbackCopy;
+      return fallbackTitle;
     }
     return title;
   }
@@ -32,7 +33,7 @@ class AppRule {
   String get resolvedBody {
     final body = notificationBody.trim();
     if (body.isEmpty) {
-      return fallbackCopy;
+      return fallbackBody;
     }
     return body;
   }

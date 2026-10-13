@@ -29,16 +29,18 @@ class ShieldConfigurationExtension: ShieldConfigurationDataSource {
   }
 
   private func make(_ rule: StoredRule?) -> ShieldConfiguration {
-    let fallback = "Re-think — time's up on this app."
+    // Mirrors AppRule.fallbackTitle / fallbackBody in Dart.
+    let fallbackTitle = "Time to recenter."
+    let fallbackBody = "You've reached the limit you set for this app."
     let teal = UIColor(red: 15 / 255, green: 118 / 255, blue: 110 / 255, alpha: 1)
     let label = rule?.label ?? "app"
     return ShieldConfiguration(
       backgroundBlurStyle: .systemUltraThinMaterialDark,
       backgroundColor: UIColor(red: 28 / 255, green: 28 / 255, blue: 30 / 255, alpha: 0.9),
       icon: UIImage(systemName: "hourglass.bottomhalf.filled"),
-      title: ShieldConfiguration.Label(text: rule?.title ?? fallback, color: .white),
+      title: ShieldConfiguration.Label(text: rule?.title ?? fallbackTitle, color: .white),
       subtitle: ShieldConfiguration.Label(
-        text: rule?.body ?? fallback,
+        text: rule?.body ?? fallbackBody,
         color: UIColor.white.withAlphaComponent(0.7)
       ),
       primaryButtonLabel: ShieldConfiguration.Label(text: "Close \(label)", color: .white),

@@ -409,11 +409,11 @@ class _PigeonCodec extends StandardMessageCodec {
   }
 }
 
-class ReThinkHostApi {
-  /// Constructor for [ReThinkHostApi].  The [binaryMessenger] named argument is
+class RecenterHostApi {
+  /// Constructor for [RecenterHostApi].  The [binaryMessenger] named argument is
   /// available for dependency injection.  If it is left null, the default
   /// BinaryMessenger will be used which routes to the host platform.
-  ReThinkHostApi({BinaryMessenger? binaryMessenger, String messageChannelSuffix = ''})
+  RecenterHostApi({BinaryMessenger? binaryMessenger, String messageChannelSuffix = ''})
       : pigeonVar_binaryMessenger = binaryMessenger,
         pigeonVar_messageChannelSuffix = messageChannelSuffix.isNotEmpty ? '.$messageChannelSuffix' : '';
   final BinaryMessenger? pigeonVar_binaryMessenger;
@@ -423,7 +423,7 @@ class ReThinkHostApi {
   final String pigeonVar_messageChannelSuffix;
 
   Future<PermissionSnapshot> getPermissionStatus() async {
-    final pigeonVar_channelName = 'dev.flutter.pigeon.re_think.ReThinkHostApi.getPermissionStatus$pigeonVar_messageChannelSuffix';
+    final pigeonVar_channelName = 'dev.flutter.pigeon.re_think.RecenterHostApi.getPermissionStatus$pigeonVar_messageChannelSuffix';
     final pigeonVar_channel = BasicMessageChannel<Object?>(
       pigeonVar_channelName,
       pigeonChannelCodec,
@@ -442,7 +442,7 @@ class ReThinkHostApi {
   }
 
   Future<PermissionSnapshot> requestPermission(String kind) async {
-    final pigeonVar_channelName = 'dev.flutter.pigeon.re_think.ReThinkHostApi.requestPermission$pigeonVar_messageChannelSuffix';
+    final pigeonVar_channelName = 'dev.flutter.pigeon.re_think.RecenterHostApi.requestPermission$pigeonVar_messageChannelSuffix';
     final pigeonVar_channel = BasicMessageChannel<Object?>(
       pigeonVar_channelName,
       pigeonChannelCodec,
@@ -461,7 +461,7 @@ class ReThinkHostApi {
   }
 
   Future<void> upsertAppRule(NativeAppRule rule) async {
-    final pigeonVar_channelName = 'dev.flutter.pigeon.re_think.ReThinkHostApi.upsertAppRule$pigeonVar_messageChannelSuffix';
+    final pigeonVar_channelName = 'dev.flutter.pigeon.re_think.RecenterHostApi.upsertAppRule$pigeonVar_messageChannelSuffix';
     final pigeonVar_channel = BasicMessageChannel<Object?>(
       pigeonVar_channelName,
       pigeonChannelCodec,
@@ -479,7 +479,7 @@ class ReThinkHostApi {
   }
 
   Future<void> deleteAppRule(String id) async {
-    final pigeonVar_channelName = 'dev.flutter.pigeon.re_think.ReThinkHostApi.deleteAppRule$pigeonVar_messageChannelSuffix';
+    final pigeonVar_channelName = 'dev.flutter.pigeon.re_think.RecenterHostApi.deleteAppRule$pigeonVar_messageChannelSuffix';
     final pigeonVar_channel = BasicMessageChannel<Object?>(
       pigeonVar_channelName,
       pigeonChannelCodec,
@@ -497,7 +497,7 @@ class ReThinkHostApi {
   }
 
   Future<void> startMonitoring() async {
-    final pigeonVar_channelName = 'dev.flutter.pigeon.re_think.ReThinkHostApi.startMonitoring$pigeonVar_messageChannelSuffix';
+    final pigeonVar_channelName = 'dev.flutter.pigeon.re_think.RecenterHostApi.startMonitoring$pigeonVar_messageChannelSuffix';
     final pigeonVar_channel = BasicMessageChannel<Object?>(
       pigeonVar_channelName,
       pigeonChannelCodec,
@@ -515,7 +515,7 @@ class ReThinkHostApi {
   }
 
   Future<void> stopMonitoring() async {
-    final pigeonVar_channelName = 'dev.flutter.pigeon.re_think.ReThinkHostApi.stopMonitoring$pigeonVar_messageChannelSuffix';
+    final pigeonVar_channelName = 'dev.flutter.pigeon.re_think.RecenterHostApi.stopMonitoring$pigeonVar_messageChannelSuffix';
     final pigeonVar_channel = BasicMessageChannel<Object?>(
       pigeonVar_channelName,
       pigeonChannelCodec,
@@ -533,7 +533,7 @@ class ReThinkHostApi {
   }
 
   Future<MonitoringStatus> getMonitoringStatus() async {
-    final pigeonVar_channelName = 'dev.flutter.pigeon.re_think.ReThinkHostApi.getMonitoringStatus$pigeonVar_messageChannelSuffix';
+    final pigeonVar_channelName = 'dev.flutter.pigeon.re_think.RecenterHostApi.getMonitoringStatus$pigeonVar_messageChannelSuffix';
     final pigeonVar_channel = BasicMessageChannel<Object?>(
       pigeonVar_channelName,
       pigeonChannelCodec,
@@ -552,7 +552,7 @@ class ReThinkHostApi {
   }
 
   Future<List<InstalledApp>> listInstalledApps() async {
-    final pigeonVar_channelName = 'dev.flutter.pigeon.re_think.ReThinkHostApi.listInstalledApps$pigeonVar_messageChannelSuffix';
+    final pigeonVar_channelName = 'dev.flutter.pigeon.re_think.RecenterHostApi.listInstalledApps$pigeonVar_messageChannelSuffix';
     final pigeonVar_channel = BasicMessageChannel<Object?>(
       pigeonVar_channelName,
       pigeonChannelCodec,
@@ -571,7 +571,7 @@ class ReThinkHostApi {
   }
 
   Future<String> pickIosActivity() async {
-    final pigeonVar_channelName = 'dev.flutter.pigeon.re_think.ReThinkHostApi.pickIosActivity$pigeonVar_messageChannelSuffix';
+    final pigeonVar_channelName = 'dev.flutter.pigeon.re_think.RecenterHostApi.pickIosActivity$pigeonVar_messageChannelSuffix';
     final pigeonVar_channel = BasicMessageChannel<Object?>(
       pigeonVar_channelName,
       pigeonChannelCodec,
@@ -590,7 +590,7 @@ class ReThinkHostApi {
   }
 
   Future<void> unlockApp(String ruleId) async {
-    final pigeonVar_channelName = 'dev.flutter.pigeon.re_think.ReThinkHostApi.unlockApp$pigeonVar_messageChannelSuffix';
+    final pigeonVar_channelName = 'dev.flutter.pigeon.re_think.RecenterHostApi.unlockApp$pigeonVar_messageChannelSuffix';
     final pigeonVar_channel = BasicMessageChannel<Object?>(
       pigeonVar_channelName,
       pigeonChannelCodec,
@@ -608,7 +608,7 @@ class ReThinkHostApi {
   }
 
   Future<void> saveSettings(NativeSettings settings) async {
-    final pigeonVar_channelName = 'dev.flutter.pigeon.re_think.ReThinkHostApi.saveSettings$pigeonVar_messageChannelSuffix';
+    final pigeonVar_channelName = 'dev.flutter.pigeon.re_think.RecenterHostApi.saveSettings$pigeonVar_messageChannelSuffix';
     final pigeonVar_channel = BasicMessageChannel<Object?>(
       pigeonVar_channelName,
       pigeonChannelCodec,

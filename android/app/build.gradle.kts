@@ -17,7 +17,7 @@ android {
     }
 
     defaultConfig {
-        applicationId = "com.rethink.app"
+        applicationId = "com.aquibkhan.recenter"
         // You can update the following values to match your application needs.
         // For more information, see: https://flutter.dev/to/review-gradle-config.
         // Android 10: UsageStats event types and specialUse FGS fallbacks used by MonitorService.

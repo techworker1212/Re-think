@@ -3,7 +3,7 @@ import SwiftUI
 import UIKit
 
 /// Wraps Apple's FamilyActivityPicker. Apple never reveals the picked app's name to
-/// Re-think, which is why the Flutter editor asks the user for a label.
+/// Recenter, which is why the Flutter editor asks the user for a label.
 struct ActivityPickerView: View {
   @State var selection = FamilyActivitySelection()
   let onFinish: (FamilyActivitySelection?) -> Void

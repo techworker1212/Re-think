@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-const rethinkTeal = Color(0xFF0F766E);
+const recenterTeal = Color(0xFF0F766E);
 
-ThemeData rethinkTheme() {
+ThemeData recenterTheme() {
   final scheme = ColorScheme.fromSeed(
-    seedColor: rethinkTeal,
+    seedColor: recenterTeal,
     brightness: Brightness.light,
   );
   return ThemeData(

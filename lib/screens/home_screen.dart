@@ -17,7 +17,7 @@ class HomeScreen extends StatelessWidget {
       builder: (context, _) {
         return Scaffold(
           appBar: AppBar(
-            title: const Text('Re-think'),
+            title: const Text('Recenter'),
             actions: [
               IconButton(
                 icon: const Icon(Icons.settings_outlined),
@@ -145,7 +145,7 @@ class _PermissionBanner extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Re-think needs a few permissions to work',
+              'Recenter needs a few permissions to work',
               style: TextStyle(
                 color: scheme.onErrorContainer,
                 fontWeight: FontWeight.w600,

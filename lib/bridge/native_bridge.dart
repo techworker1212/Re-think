@@ -14,9 +14,9 @@ class ListedApp {
 }
 
 class NativeBridge {
-  NativeBridge({ReThinkHostApi? api}) : _api = api ?? ReThinkHostApi();
+  NativeBridge({RecenterHostApi? api}) : _api = api ?? RecenterHostApi();
 
-  final ReThinkHostApi _api;
+  final RecenterHostApi _api;
 
   bool get isIos => !kIsWeb && Platform.isIOS;
   bool get isAndroid => !kIsWeb && Platform.isAndroid;

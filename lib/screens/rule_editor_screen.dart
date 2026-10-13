@@ -154,7 +154,7 @@ class _RuleEditorScreenState extends State<RuleEditorScreen> {
             ),
             const SizedBox(height: 8),
             const Text(
-              'Apple does not tell Re-think the app’s real name. Type a label such as Instagram.',
+              'Apple does not tell Recenter the app’s real name. Type a label such as Instagram.',
             ),
           ] else ...[
             Text('Presets', style: Theme.of(context).textTheme.titleSmall),

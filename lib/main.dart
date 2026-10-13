@@ -10,5 +10,5 @@ Future<void> main() async {
   final store = LocalStore();
   final controller = AppController(store: store, bridge: NativeBridge());
   await controller.bootstrap();
-  runApp(ReThinkApp(controller: controller));
+  runApp(RecenterApp(controller: controller));
 }

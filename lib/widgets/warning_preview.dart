@@ -26,7 +26,7 @@ class WarningPreview extends StatelessWidget {
                 width: 28,
                 height: 28,
                 decoration: BoxDecoration(
-                  color: rethinkTeal,
+                  color: recenterTeal,
                   borderRadius: BorderRadius.circular(8),
                 ),
                 child: const Icon(
@@ -37,7 +37,7 @@ class WarningPreview extends StatelessWidget {
               ),
               const SizedBox(width: 8),
               const Text(
-                'Re-think · 5s warning',
+                'Recenter · 5s warning',
                 style: TextStyle(color: Colors.white70, fontSize: 12),
               ),
             ],
