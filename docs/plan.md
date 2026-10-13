@@ -207,3 +207,10 @@ Website blocking, parental/child Family Sharing, accounts/sync, Android Accessib
   package `com.rethink.app`, and the stored-data keys.
 - Earlier `com.aquibkhan.rethink*` entries in this file are historical. The Family Controls
   distribution request should use the **recenter** IDs.
+
+## Update (2026-10-13): ready for submission, waiting on Apple
+- Family Controls **distribution** request submitted on 2026-10-13. Waiting for Apple's email.
+- Done: app icon, privacy policy and support page (GitHub Pages), App Store listing text
+  (`docs/app-store-listing.md`), and four 6.9" screenshots (`assets/screenshots/app-store/`).
+- Next, once approved: create the App Store Connect record (if not already done), archive, upload
+  to TestFlight, test, then submit for review.
