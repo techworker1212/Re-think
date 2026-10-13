@@ -54,8 +54,8 @@ way Android does. After an unlock, the next warning comes after `cooldown` minut
 
 ## Still to do before submission
 
-- [ ] App icon. Both platforms still use the Flutter default. Replace
-      `ios/Runner/Assets.xcassets/AppIcon.appiconset` and `android/app/src/main/res/mipmap-*`.
+- [x] App icon: concept A, "return to center". Source is `assets/icon/make_icon.swift`; re-run it and
+      resize into `ios/Runner/Assets.xcassets/AppIcon.appiconset` and `android/app/src/main/res/mipmap-*` to change it.
 - [ ] Store screenshots: home, rule editor with preview, Android pause screen, iOS shield.
 - [ ] Privacy policy URL (required by both stores even with no data collected).
 - [ ] Physical-device verification matrix (see the plan's "Verification" section).
