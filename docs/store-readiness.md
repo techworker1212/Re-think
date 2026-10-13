@@ -6,7 +6,8 @@ Nothing here has been submitted. This is the checklist for when you're ready.
 
 | Thing | Value |
 | --- | --- |
-| iOS bundle ID / Android applicationId | `com.aquibkhan.rethink` |
+| iOS bundle ID | `com.aquibkhan.rethink` |
+| Android applicationId | `com.rethink.app` (check it is free on Play before publishing) |
 | iOS extensions | `com.aquibkhan.rethink.DeviceActivityMonitor`, `.ShieldConfiguration`, `.ShieldAction` |
 | App Group (app + all 3 extensions) | `group.com.aquibkhan.rethink` |
 | Minimum OS | iOS 16, Android 10 (API 29) |
