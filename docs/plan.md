@@ -209,7 +209,10 @@ Website blocking, parental/child Family Sharing, accounts/sync, Android Accessib
   distribution request should use the **recenter** IDs.
 
 ## Update (2026-10-13): ready for submission, waiting on Apple
-- Family Controls **distribution** request submitted on 2026-10-13. Waiting for Apple's email.
+- Family Controls **distribution** request submitted on 2026-10-13. Apple's form is now one
+  team-level request (prefilled, "get entitlement"), not one per bundle ID. Waiting for the email.
+- After approval: in Identifiers, open each of the 4 `com.aquibkhan.recenter*` IDs →
+  **Additional Capabilities** → tick **Family Controls (Distribution)** → Save.
 - Done: app icon, privacy policy and support page (GitHub Pages), App Store listing text
   (`docs/app-store-listing.md`), and four 6.9" screenshots (`assets/screenshots/app-store/`).
 - Next, once approved: create the App Store Connect record (if not already done), archive, upload

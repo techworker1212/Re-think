@@ -14,10 +14,10 @@ Nothing here has been submitted. This is the checklist for when you're ready.
 
 ## Apple (App Store)
 
-1. **Request the Family Controls distribution entitlement now.** The Account Holder does this at
-   developer.apple.com/contact/request/family-controls-distribution, once for **each** of the
-   4 bundle IDs above. Approval takes days to weeks. Development builds on a device work without it;
-   TestFlight and the App Store don't.
+1. **Family Controls distribution entitlement:** requested 2026-10-13 (one team-level request at
+   developer.apple.com/contact/request/family-controls-distribution). Once approved, enable
+   **Family Controls (Distribution)** under Additional Capabilities on each of the 4 bundle IDs.
+   Development builds on a device work without it; TestFlight and the App Store don't.
 2. In Certificates, Identifiers & Profiles, register all 4 bundle IDs and turn on
    **Family Controls** and **App Groups** (`group.com.aquibkhan.recenter`) for each one.
 3. In Xcode, set the Team on all 4 targets (Runner, DeviceActivityMonitor, ShieldConfiguration,
