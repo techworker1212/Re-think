@@ -57,5 +57,5 @@ way Android does. After an unlock, the next warning comes after `cooldown` minut
 - [x] App icon: concept A, "return to center". Source is `assets/icon/make_icon.swift`; re-run it and
       resize into `ios/Runner/Assets.xcassets/AppIcon.appiconset` and `android/app/src/main/res/mipmap-*` to change it.
 - [ ] Store screenshots: home, rule editor with preview, Android pause screen, iOS shield.
-- [ ] Privacy policy URL (required by both stores even with no data collected).
+- [x] Privacy policy: https://techworker1212.github.io/Re-think/privacy.html (source in `website/`, published from the `gh-pages` branch).
 - [ ] Physical-device verification matrix (see the plan's "Verification" section).
