@@ -180,3 +180,18 @@ Website blocking, parental/child Family Sharing, accounts/sync, Android Accessib
    the shield shows the same copy, then Unlock, then the cool-down, then the warning again. Test
    with two rules that have different messages.
 5. Remaining polish: app icon, privacy policy URL, store screenshots.
+
+## Update (2026-10-12): verified on a physical iPhone
+- Developer account approved: team `NC7A2HC4R5` (individual). iOS bundle ID changed to
+  `com.aquibkhan.rethink` because `com.rethink.app` was already taken. The App Group is
+  `group.com.aquibkhan.rethink`.
+- The full flow works on an iPhone 17 Pro: Screen Time authorization, app picker, 1-minute limit,
+  custom notification, shield with the custom copy, unlock, and the cool-down re-warning.
+- Device build: `xcodebuild -workspace ios/Runner.xcworkspace -scheme Runner -configuration Release
+  -destination 'id=<UDID>' -allowProvisioningUpdates -allowProvisioningDeviceRegistration build`,
+  then install with `xcrun devicectl device install app`.
+
+## Next
+1. Submit the Family Controls **distribution** request for the 4 `com.aquibkhan.rethink*` bundle IDs.
+2. App icon, privacy policy URL, store screenshots.
+3. TestFlight once distribution is approved.
