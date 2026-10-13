@@ -14,6 +14,7 @@ class RecenterApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Recenter',
+      debugShowCheckedModeBanner: false,
       theme: recenterTheme(),
       home: AnimatedBuilder(
         animation: controller,

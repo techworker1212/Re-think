@@ -193,7 +193,7 @@ class _RuleTile extends StatelessWidget {
       child: ListTile(
         title: Text(rule.displayLabel),
         subtitle: Text(
-          '${rule.limitMinutes} min · ${rule.resolvedTitle}',
+          '${rule.limitMinutes} min a day\n“${rule.resolvedTitle}”',
           maxLines: 2,
           overflow: TextOverflow.ellipsis,
         ),
