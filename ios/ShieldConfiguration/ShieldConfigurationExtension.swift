@@ -37,7 +37,9 @@ class ShieldConfigurationExtension: ShieldConfigurationDataSource {
     return ShieldConfiguration(
       backgroundBlurStyle: .systemUltraThinMaterialDark,
       backgroundColor: UIColor(red: 28 / 255, green: 28 / 255, blue: 30 / 255, alpha: 0.9),
-      icon: UIImage(systemName: "hourglass.bottomhalf.filled"),
+      // SF Symbols render black unless tinted, which disappears on the dark shield.
+      icon: UIImage(systemName: "hourglass.bottomhalf.filled")?
+        .withTintColor(.white, renderingMode: .alwaysOriginal),
       title: ShieldConfiguration.Label(text: rule?.title ?? fallbackTitle, color: .white),
       subtitle: ShieldConfiguration.Label(
         text: rule?.body ?? fallbackBody,

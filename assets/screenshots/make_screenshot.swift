@@ -8,7 +8,9 @@ guard args.count == 4 else {
   print("usage: make_screenshot.swift <raw.png> <out.png> \"<headline>\"")
   exit(1)
 }
-let (input, output, headline) = (args[1], args[2], args[3])
+// A literal "\\n" in the headline forces a line break where the automatic wrap reads badly.
+let (input, output) = (args[1], args[2])
+let headline = args[3].replacingOccurrences(of: "\\n", with: "\n")
 
 let width = 1320
 let height = 2868

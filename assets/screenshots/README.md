@@ -18,4 +18,11 @@ To frame a capture with a headline:
 swift assets/screenshots/make_screenshot.swift raw/01-home.png app-store/01-home.png "Limits for the apps that steal your time"
 ```
 
-The notification and shield screenshots must come from a real iPhone.
+The notification and shield screenshots must come from a real iPhone. Blur anything behind the
+notification (it usually shows another app's content) by keeping only the status bar and banner sharp:
+
+```bash
+swift assets/screenshots/focus_region.swift original.png raw/03-notification.png 0,0,1206,170,0 24,178,1158,194,62
+```
+
+Headlines can force a line break with `\n`, e.g. `'A 5-second\nheads-up first'`.
