@@ -29,7 +29,7 @@ struct StoredRule: Codable {
 /// Rules and state in the App Group, so the monitor and shield extensions can read the
 /// user's custom copy without the app running.
 final class RuleStore {
-  static let appGroup = "group.com.rethink.app"
+  static let appGroup = "group.com.aquibkhan.rethink"
   static let shared = RuleStore()
 
   private let defaults: UserDefaults

@@ -6,7 +6,7 @@
 	<true/>
 	<key>com.apple.security.application-groups</key>
 	<array>
-		<string>group.com.rethink.app</string>
+		<string>group.com.aquibkhan.rethink</string>
 	</array>
 </dict>
 </plist>

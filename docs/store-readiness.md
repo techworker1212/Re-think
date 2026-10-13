@@ -6,9 +6,9 @@ Nothing here has been submitted. This is the checklist for when you're ready.
 
 | Thing | Value |
 | --- | --- |
-| iOS bundle ID / Android applicationId | `com.rethink.app` |
-| iOS extensions | `com.rethink.app.DeviceActivityMonitor`, `.ShieldConfiguration`, `.ShieldAction` |
-| App Group (app + all 3 extensions) | `group.com.rethink.app` |
+| iOS bundle ID / Android applicationId | `com.aquibkhan.rethink` |
+| iOS extensions | `com.aquibkhan.rethink.DeviceActivityMonitor`, `.ShieldConfiguration`, `.ShieldAction` |
+| App Group (app + all 3 extensions) | `group.com.aquibkhan.rethink` |
 | Minimum OS | iOS 16, Android 10 (API 29) |
 
 ## Apple (App Store)
@@ -18,7 +18,7 @@ Nothing here has been submitted. This is the checklist for when you're ready.
    4 bundle IDs above. Approval takes days to weeks. Development builds on a device work without it;
    TestFlight and the App Store don't.
 2. In Certificates, Identifiers & Profiles, register all 4 bundle IDs and turn on
-   **Family Controls** and **App Groups** (`group.com.rethink.app`) for each one.
+   **Family Controls** and **App Groups** (`group.com.aquibkhan.rethink`) for each one.
 3. In Xcode, set the Team on all 4 targets (Runner, DeviceActivityMonitor, ShieldConfiguration,
    ShieldAction). The entitlements files are already in place.
 4. App Review notes: explain that Re-think uses Screen Time (individual authorization) only to

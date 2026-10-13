@@ -128,7 +128,7 @@ Keep UI simple (Material 3, one accent color). No accounts.
 ## Store and accounts (you, outside the repo)
 
 - Apple Developer Program + Google Play Console.
-- Bundle ID `com.rethink.app`; Android applicationId the same.
+- Bundle ID `com.aquibkhan.rethink`; Android applicationId the same.
 - App Store: Screen Time / Family Controls justification; privacy nutrition labels (usage data stays on device).
 - Play: usage-access / overlay declarations and a short video of the pause flow for reviewers.
 - Assets: app icon, 5s warning copy, screenshots for both stores.
@@ -172,8 +172,8 @@ Website blocking, parental/child Family Sharing, accounts/sync, Android Accessib
 ## When the developer account is approved
 1. In Xcode, open `ios/Runner.xcworkspace` and set the Team on all 4 targets: Runner,
    DeviceActivityMonitor, ShieldConfiguration, ShieldAction.
-2. Register the bundle IDs `com.rethink.app` and `com.rethink.app.{DeviceActivityMonitor,ShieldConfiguration,ShieldAction}`
-   with the Family Controls and App Groups (`group.com.rethink.app`) capabilities.
+2. Register the bundle IDs `com.aquibkhan.rethink` and `com.aquibkhan.rethink.{DeviceActivityMonitor,ShieldConfiguration,ShieldAction}`
+   with the Family Controls and App Groups (`group.com.aquibkhan.rethink`) capabilities.
 3. Submit the Family Controls **distribution** request for all 4 bundle IDs. It's only needed for
    TestFlight and the App Store; device testing works without it.
 4. Run on a physical iPhone. Verify: pick an app, then the 5s warning shows the custom copy, then
