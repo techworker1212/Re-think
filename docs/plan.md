@@ -217,3 +217,10 @@ Website blocking, parental/child Family Sharing, accounts/sync, Android Accessib
   (`docs/app-store-listing.md`), and four 6.9" screenshots (`assets/screenshots/app-store/`).
 - Next, once approved: create the App Store Connect record (if not already done), archive, upload
   to TestFlight, test, then submit for review.
+
+## Update (2026-10-15): Family Controls distribution approved
+- Approved. Family Controls (Distribution) is enabled on all 4 IDs.
+- A local App Store export (`xcodebuild archive` + `-exportArchive` with method
+  `app-store-connect`, destination `export`) succeeded. It's signed with Apple Distribution, and all
+  4 bundles carry the family-controls and App Group entitlements. Nothing uploaded yet.
+- Next: App Store Connect app record, then upload to TestFlight, test, then submit for review.
