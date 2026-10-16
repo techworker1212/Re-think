@@ -11,6 +11,8 @@ data class StoredRule(
     val packageName: String,
     val label: String,
     val limitMinutes: Int,
+    /** How long "Unlock" on the pause screen opens this app before the next reminder. */
+    val unlockMinutes: Int,
     val title: String,
     val body: String,
     val enabled: Boolean,
@@ -34,6 +36,8 @@ class RuleStore(context: Context) {
                 packageName = json.getString("packageName"),
                 label = json.getString("label"),
                 limitMinutes = json.getInt("limitMinutes"),
+                // Rules saved before per-rule unlock times don't have this field.
+                unlockMinutes = json.optInt("unlockMinutes", DEFAULT_UNLOCK_MINUTES),
                 title = json.getString("title"),
                 body = json.getString("body"),
                 enabled = json.getBoolean("enabled"),
@@ -65,6 +69,7 @@ class RuleStore(context: Context) {
                     .put("packageName", rule.packageName)
                     .put("label", rule.label)
                     .put("limitMinutes", rule.limitMinutes)
+                    .put("unlockMinutes", rule.unlockMinutes)
                     .put("title", rule.title)
                     .put("body", rule.body)
                     .put("enabled", rule.enabled),
@@ -77,10 +82,6 @@ class RuleStore(context: Context) {
         get() = prefs.getBoolean(KEY_MONITORING, false)
         set(value) = prefs.edit().putBoolean(KEY_MONITORING, value).apply()
 
-    var cooldownMinutes: Int
-        get() = prefs.getInt(KEY_COOLDOWN, 2)
-        set(value) = prefs.edit().putInt(KEY_COOLDOWN, value).apply()
-
     fun blockedRuleIds(): Set<String> = prefs.getStringSet(KEY_BLOCKED, emptySet())!!.toSet()
 
     fun isBlocked(ruleId: String) = ruleId in blockedRuleIds()
@@ -91,11 +92,12 @@ class RuleStore(context: Context) {
 
     fun cooldownUntil(ruleId: String): Long = prefs.getLong(cooldownKey(ruleId), 0L)
 
-    /** Lifts the block and grants the cool-down before the next warning cycle. */
+    /** Lifts the block and grants this rule's unlock time before the next warning cycle. */
     fun unlock(ruleId: String, now: Long = System.currentTimeMillis()) {
+        val minutes = rule(ruleId)?.unlockMinutes ?: DEFAULT_UNLOCK_MINUTES
         prefs.edit()
             .putStringSet(KEY_BLOCKED, blockedRuleIds() - ruleId)
-            .putLong(cooldownKey(ruleId), now + cooldownMinutes * 60_000L)
+            .putLong(cooldownKey(ruleId), now + minutes * 60_000L)
             .apply()
     }
 
@@ -119,7 +121,7 @@ class RuleStore(context: Context) {
     companion object {
         private const val KEY_RULES = "rules"
         private const val KEY_MONITORING = "monitoring"
-        private const val KEY_COOLDOWN = "cooldownMinutes"
+        const val DEFAULT_UNLOCK_MINUTES = 2
         private const val KEY_BLOCKED = "blocked"
         private const val KEY_INTERRUPTIONS = "interruptions"
         private const val KEY_INTERRUPTION_DAY = "interruptionDay"

@@ -88,6 +88,7 @@ class MainActivity : FlutterActivity() {
                     packageName = rule.platformAppId,
                     label = rule.displayLabel,
                     limitMinutes = rule.limitMinutes.toInt(),
+                    unlockMinutes = rule.unlockMinutes.toInt(),
                     title = rule.notificationTitle,
                     body = rule.notificationBody,
                     enabled = rule.enabled,
@@ -142,7 +143,7 @@ class MainActivity : FlutterActivity() {
         override fun unlockApp(ruleId: String) = store.unlock(ruleId)
 
         override fun saveSettings(settings: NativeSettings) {
-            store.cooldownMinutes = settings.cooldownMinutes.toInt()
+            // Nothing native-side depends on app-wide settings any more; unlock time is per rule.
         }
     }
 

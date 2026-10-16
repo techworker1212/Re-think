@@ -23,6 +23,7 @@ class _RuleEditorScreenState extends State<RuleEditorScreen> {
   late final TextEditingController _title;
   late final TextEditingController _body;
   late int _limit;
+  late int _unlock;
   late String _platformAppId;
   String? _pickedLabel;
   List<({String id, String label})> _installed = [];
@@ -46,6 +47,7 @@ class _RuleEditorScreenState extends State<RuleEditorScreen> {
     _title = TextEditingController(text: existing?.notificationTitle ?? '');
     _body = TextEditingController(text: existing?.notificationBody ?? '');
     _limit = existing?.limitMinutes ?? defaults.defaultLimitMinutes;
+    _unlock = existing?.unlockMinutes ?? AppRule.defaultUnlockMinutes;
     _platformAppId = existing?.platformAppId ?? '';
     _pickedLabel = existing?.displayLabel;
     _label.addListener(_rebuild);
@@ -82,6 +84,7 @@ class _RuleEditorScreenState extends State<RuleEditorScreen> {
           ? (_pickedLabel ?? 'App')
           : _label.text.trim(),
       limitMinutes: _limit,
+      unlockMinutes: _unlock,
       notificationTitle: _title.text,
       notificationBody: _body.text,
       enabled: existing?.enabled ?? true,
@@ -227,6 +230,19 @@ class _RuleEditorScreenState extends State<RuleEditorScreen> {
             value: _limit.toDouble(),
             label: '$_limit min',
             onChanged: (value) => setState(() => _limit = value.round()),
+          ),
+          Text('Unlock for: $_unlock ${_unlock == 1 ? 'minute' : 'minutes'}'),
+          Text(
+            'How long "Unlock" on the pause screen opens this app before the next reminder.',
+            style: Theme.of(context).textTheme.bodySmall,
+          ),
+          Slider(
+            min: 1,
+            max: 15,
+            divisions: 14,
+            value: _unlock.toDouble(),
+            label: '$_unlock min',
+            onChanged: (value) => setState(() => _unlock = value.round()),
           ),
           const SizedBox(height: 8),
           TextField(

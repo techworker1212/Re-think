@@ -81,7 +81,9 @@ class PauseActivity : Activity() {
 
             override fun onFinish() {
                 unlockButton.isEnabled = true
-                unlockButton.text = "Unlock for ${store.cooldownMinutes} min"
+                val minutes = ruleId?.let(store::rule)?.unlockMinutes
+                    ?: RuleStore.DEFAULT_UNLOCK_MINUTES
+                unlockButton.text = "Unlock for $minutes min"
             }
         }.start()
     }

@@ -15,6 +15,22 @@ void main() {
     expect(rule.resolvedBody, AppRule.fallbackBody);
   });
 
+  test('unlock minutes round-trip, and older saved rules default to 2', () {
+    const rule = AppRule(
+      id: '3',
+      platformAppId: 'x',
+      displayLabel: 'YouTube',
+      limitMinutes: 30,
+      unlockMinutes: 5,
+      notificationTitle: '',
+      notificationBody: '',
+    );
+    expect(AppRule.fromJson(rule.toJson()).unlockMinutes, 5);
+
+    final legacy = rule.toJson()..remove('unlockMinutes');
+    expect(AppRule.fromJson(legacy).unlockMinutes, AppRule.defaultUnlockMinutes);
+  });
+
   test('custom copy is used when present', () {
     const rule = AppRule(
       id: '2',

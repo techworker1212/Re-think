@@ -103,6 +103,7 @@ class NativeAppRule {
     required this.platformAppId,
     required this.displayLabel,
     required this.limitMinutes,
+    required this.unlockMinutes,
     required this.notificationTitle,
     required this.notificationBody,
     required this.enabled,
@@ -116,6 +117,8 @@ class NativeAppRule {
 
   int limitMinutes;
 
+  int unlockMinutes;
+
   String notificationTitle;
 
   String notificationBody;
@@ -128,6 +131,7 @@ class NativeAppRule {
       platformAppId,
       displayLabel,
       limitMinutes,
+      unlockMinutes,
       notificationTitle,
       notificationBody,
       enabled,
@@ -144,9 +148,10 @@ class NativeAppRule {
       platformAppId: result[1]! as String,
       displayLabel: result[2]! as String,
       limitMinutes: result[3]! as int,
-      notificationTitle: result[4]! as String,
-      notificationBody: result[5]! as String,
-      enabled: result[6]! as bool,
+      unlockMinutes: result[4]! as int,
+      notificationTitle: result[5]! as String,
+      notificationBody: result[6]! as String,
+      enabled: result[7]! as bool,
     );
   }
 
@@ -159,7 +164,7 @@ class NativeAppRule {
     if (identical(this, other)) {
       return true;
     }
-    return _deepEquals(id, other.id) && _deepEquals(platformAppId, other.platformAppId) && _deepEquals(displayLabel, other.displayLabel) && _deepEquals(limitMinutes, other.limitMinutes) && _deepEquals(notificationTitle, other.notificationTitle) && _deepEquals(notificationBody, other.notificationBody) && _deepEquals(enabled, other.enabled);
+    return _deepEquals(id, other.id) && _deepEquals(platformAppId, other.platformAppId) && _deepEquals(displayLabel, other.displayLabel) && _deepEquals(limitMinutes, other.limitMinutes) && _deepEquals(unlockMinutes, other.unlockMinutes) && _deepEquals(notificationTitle, other.notificationTitle) && _deepEquals(notificationBody, other.notificationBody) && _deepEquals(enabled, other.enabled);
   }
 
   @override
@@ -320,17 +325,13 @@ class MonitoringStatus {
 class NativeSettings {
   NativeSettings({
     required this.defaultLimitMinutes,
-    required this.cooldownMinutes,
   });
 
   int defaultLimitMinutes;
 
-  int cooldownMinutes;
-
   List<Object?> _toList() {
     return <Object?>[
       defaultLimitMinutes,
-      cooldownMinutes,
     ];
   }
 
@@ -341,7 +342,6 @@ class NativeSettings {
     result as List<Object?>;
     return NativeSettings(
       defaultLimitMinutes: result[0]! as int,
-      cooldownMinutes: result[1]! as int,
     );
   }
 
@@ -354,7 +354,7 @@ class NativeSettings {
     if (identical(this, other)) {
       return true;
     }
-    return _deepEquals(defaultLimitMinutes, other.defaultLimitMinutes) && _deepEquals(cooldownMinutes, other.cooldownMinutes);
+    return _deepEquals(defaultLimitMinutes, other.defaultLimitMinutes);
   }
 
   @override

@@ -51,6 +51,7 @@ final class HostApi: RecenterHostApi {
       id: rule.id,
       label: rule.displayLabel,
       limitMinutes: Int(rule.limitMinutes),
+      unlockMinutes: Int(rule.unlockMinutes),
       title: rule.notificationTitle,
       body: rule.notificationBody,
       enabled: rule.enabled,
@@ -119,7 +120,7 @@ final class HostApi: RecenterHostApi {
   }
 
   func saveSettings(settings: NativeSettings) throws {
-    store.cooldownMinutes = Int(settings.cooldownMinutes)
+    // Nothing native-side depends on app-wide settings any more; unlock time is per rule.
   }
 
   private func snapshot() -> PermissionSnapshot {

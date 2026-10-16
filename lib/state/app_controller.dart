@@ -166,11 +166,9 @@ class AppController extends ChangeNotifier {
 
   Future<void> updateSettings({
     int? defaultLimitMinutes,
-    int? cooldownMinutes,
   }) async {
     settings = settings.copyWith(
       defaultLimitMinutes: defaultLimitMinutes,
-      cooldownMinutes: cooldownMinutes,
     );
     await _store.saveSettings(settings);
     try {

@@ -82,11 +82,11 @@ enum RuleScheduler {
   static func unlock(_ ruleId: String, store: RuleStore = .shared) {
     // Record the unlock window first, so any threshold event that races with the re-arm
     // below is ignored instead of re-blocking the app the user just unlocked.
-    let cooldown = TimeInterval(store.cooldownMinutes * 60)
-    store.setUnlockedUntil(Date().addingTimeInterval(cooldown), for: ruleId)
+    let minutes = store.rule(id: ruleId)?.unlockMinutes ?? StoredRule.defaultUnlockMinutes
+    store.setUnlockedUntil(Date().addingTimeInterval(TimeInterval(minutes * 60)), for: ruleId)
     clearShield(ruleId)
     guard store.monitoring, let rule = store.rule(id: ruleId), rule.enabled else { return }
-    try? arm(rule, thresholdMinutes: store.cooldownMinutes, startingNow: true)
+    try? arm(rule, thresholdMinutes: minutes, startingNow: true)
   }
 
   private static func dailySchedule() -> DeviceActivitySchedule {

@@ -48,7 +48,7 @@ class ShieldConfigurationExtension: ShieldConfigurationDataSource {
       primaryButtonLabel: ShieldConfiguration.Label(text: "Close \(label)", color: .white),
       primaryButtonBackgroundColor: teal,
       secondaryButtonLabel: ShieldConfiguration.Label(
-        text: "Unlock for \(store.cooldownMinutes) min",
+        text: "Unlock for \(rule?.unlockMinutes ?? StoredRule.defaultUnlockMinutes) min",
         color: UIColor.white.withAlphaComponent(0.8)
       )
     )

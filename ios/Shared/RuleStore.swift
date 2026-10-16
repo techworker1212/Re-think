@@ -8,10 +8,43 @@ struct StoredRule: Codable {
   var id: String
   var label: String
   var limitMinutes: Int
+  /// How long "Unlock" on the shield opens this rule's apps before the next reminder.
+  var unlockMinutes: Int
   var title: String
   var body: String
   var enabled: Bool
   var selection: FamilyActivitySelection
+
+  static let defaultUnlockMinutes = 2
+
+  init(
+    id: String, label: String, limitMinutes: Int, unlockMinutes: Int, title: String,
+    body: String, enabled: Bool, selection: FamilyActivitySelection
+  ) {
+    self.id = id
+    self.label = label
+    self.limitMinutes = limitMinutes
+    self.unlockMinutes = unlockMinutes
+    self.title = title
+    self.body = body
+    self.enabled = enabled
+    self.selection = selection
+  }
+
+  // Rules saved before per-rule unlock times have no `unlockMinutes`; give them the default
+  // instead of failing to decode (which would drop every saved rule).
+  init(from decoder: Decoder) throws {
+    let c = try decoder.container(keyedBy: CodingKeys.self)
+    id = try c.decode(String.self, forKey: .id)
+    label = try c.decode(String.self, forKey: .label)
+    limitMinutes = try c.decode(Int.self, forKey: .limitMinutes)
+    unlockMinutes =
+      try c.decodeIfPresent(Int.self, forKey: .unlockMinutes) ?? Self.defaultUnlockMinutes
+    title = try c.decode(String.self, forKey: .title)
+    body = try c.decode(String.self, forKey: .body)
+    enabled = try c.decode(Bool.self, forKey: .enabled)
+    selection = try c.decode(FamilyActivitySelection.self, forKey: .selection)
+  }
 
   func covers(application token: ApplicationToken) -> Bool {
     selection.applicationTokens.contains(token)
@@ -81,11 +114,6 @@ final class RuleStore {
     set { defaults.set(newValue, forKey: Keys.monitoring) }
   }
 
-  var cooldownMinutes: Int {
-    get { defaults.object(forKey: Keys.cooldown) as? Int ?? 2 }
-    set { defaults.set(newValue, forKey: Keys.cooldown) }
-  }
-
   /// The rule is unlocked (no warnings or shields) until this time.
   func unlockedUntil(_ ruleId: String) -> Date? {
     defaults.object(forKey: Keys.unlockedUntil + ruleId) as? Date
@@ -134,7 +162,6 @@ final class RuleStore {
   private enum Keys {
     static let rules = "rules"
     static let monitoring = "monitoring"
-    static let cooldown = "cooldownMinutes"
     static let interruptions = "interruptions"
     static let interruptionDay = "interruptionDay"
     static let unlockedUntil = "unlockedUntil."

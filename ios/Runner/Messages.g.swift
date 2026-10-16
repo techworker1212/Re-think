@@ -180,6 +180,7 @@ struct NativeAppRule: Hashable {
   var platformAppId: String
   var displayLabel: String
   var limitMinutes: Int64
+  var unlockMinutes: Int64
   var notificationTitle: String
   var notificationBody: String
   var enabled: Bool
@@ -191,15 +192,17 @@ struct NativeAppRule: Hashable {
     let platformAppId = pigeonVar_list[1] as! String
     let displayLabel = pigeonVar_list[2] as! String
     let limitMinutes = pigeonVar_list[3] as! Int64
-    let notificationTitle = pigeonVar_list[4] as! String
-    let notificationBody = pigeonVar_list[5] as! String
-    let enabled = pigeonVar_list[6] as! Bool
+    let unlockMinutes = pigeonVar_list[4] as! Int64
+    let notificationTitle = pigeonVar_list[5] as! String
+    let notificationBody = pigeonVar_list[6] as! String
+    let enabled = pigeonVar_list[7] as! Bool
 
     return NativeAppRule(
       id: id,
       platformAppId: platformAppId,
       displayLabel: displayLabel,
       limitMinutes: limitMinutes,
+      unlockMinutes: unlockMinutes,
       notificationTitle: notificationTitle,
       notificationBody: notificationBody,
       enabled: enabled
@@ -211,6 +214,7 @@ struct NativeAppRule: Hashable {
       platformAppId,
       displayLabel,
       limitMinutes,
+      unlockMinutes,
       notificationTitle,
       notificationBody,
       enabled,
@@ -220,7 +224,7 @@ struct NativeAppRule: Hashable {
     if Swift.type(of: lhs) != Swift.type(of: rhs) {
       return false
     }
-    return deepEqualsMessages(lhs.id, rhs.id) && deepEqualsMessages(lhs.platformAppId, rhs.platformAppId) && deepEqualsMessages(lhs.displayLabel, rhs.displayLabel) && deepEqualsMessages(lhs.limitMinutes, rhs.limitMinutes) && deepEqualsMessages(lhs.notificationTitle, rhs.notificationTitle) && deepEqualsMessages(lhs.notificationBody, rhs.notificationBody) && deepEqualsMessages(lhs.enabled, rhs.enabled)
+    return deepEqualsMessages(lhs.id, rhs.id) && deepEqualsMessages(lhs.platformAppId, rhs.platformAppId) && deepEqualsMessages(lhs.displayLabel, rhs.displayLabel) && deepEqualsMessages(lhs.limitMinutes, rhs.limitMinutes) && deepEqualsMessages(lhs.unlockMinutes, rhs.unlockMinutes) && deepEqualsMessages(lhs.notificationTitle, rhs.notificationTitle) && deepEqualsMessages(lhs.notificationBody, rhs.notificationBody) && deepEqualsMessages(lhs.enabled, rhs.enabled)
   }
 
   func hash(into hasher: inout Hasher) {
@@ -229,6 +233,7 @@ struct NativeAppRule: Hashable {
     deepHashMessages(value: platformAppId, hasher: &hasher)
     deepHashMessages(value: displayLabel, hasher: &hasher)
     deepHashMessages(value: limitMinutes, hasher: &hasher)
+    deepHashMessages(value: unlockMinutes, hasher: &hasher)
     deepHashMessages(value: notificationTitle, hasher: &hasher)
     deepHashMessages(value: notificationBody, hasher: &hasher)
     deepHashMessages(value: enabled, hasher: &hasher)
@@ -361,36 +366,31 @@ struct MonitoringStatus: Hashable {
 /// Generated class from Pigeon that represents data sent in messages.
 struct NativeSettings: Hashable {
   var defaultLimitMinutes: Int64
-  var cooldownMinutes: Int64
 
 
   // swift-format-ignore: AlwaysUseLowerCamelCase
   static func fromList(_ pigeonVar_list: [Any?]) -> NativeSettings? {
     let defaultLimitMinutes = pigeonVar_list[0] as! Int64
-    let cooldownMinutes = pigeonVar_list[1] as! Int64
 
     return NativeSettings(
-      defaultLimitMinutes: defaultLimitMinutes,
-      cooldownMinutes: cooldownMinutes
+      defaultLimitMinutes: defaultLimitMinutes
     )
   }
   func toList() -> [Any?] {
     return [
-      defaultLimitMinutes,
-      cooldownMinutes,
+      defaultLimitMinutes
     ]
   }
   static func == (lhs: NativeSettings, rhs: NativeSettings) -> Bool {
     if Swift.type(of: lhs) != Swift.type(of: rhs) {
       return false
     }
-    return deepEqualsMessages(lhs.defaultLimitMinutes, rhs.defaultLimitMinutes) && deepEqualsMessages(lhs.cooldownMinutes, rhs.cooldownMinutes)
+    return deepEqualsMessages(lhs.defaultLimitMinutes, rhs.defaultLimitMinutes)
   }
 
   func hash(into hasher: inout Hasher) {
     hasher.combine("NativeSettings")
     deepHashMessages(value: defaultLimitMinutes, hasher: &hasher)
-    deepHashMessages(value: cooldownMinutes, hasher: &hasher)
   }
 }
 

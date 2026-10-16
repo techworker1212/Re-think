@@ -17,6 +17,7 @@ class NativeAppRule {
     required this.platformAppId,
     required this.displayLabel,
     required this.limitMinutes,
+    required this.unlockMinutes,
     required this.notificationTitle,
     required this.notificationBody,
     required this.enabled,
@@ -26,6 +27,7 @@ class NativeAppRule {
   String platformAppId;
   String displayLabel;
   int limitMinutes;
+  int unlockMinutes;
   String notificationTitle;
   String notificationBody;
   bool enabled;
@@ -67,11 +69,9 @@ class MonitoringStatus {
 class NativeSettings {
   NativeSettings({
     required this.defaultLimitMinutes,
-    required this.cooldownMinutes,
   });
 
   int defaultLimitMinutes;
-  int cooldownMinutes;
 }
 
 @HostApi()

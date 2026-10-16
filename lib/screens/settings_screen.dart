@@ -39,19 +39,6 @@ class SettingsScreen extends StatelessWidget {
                   },
                 ),
               ),
-              ListTile(
-                contentPadding: EdgeInsets.zero,
-                title: Text('Cool-down: ${settings.cooldownMinutes} min'),
-                subtitle: Slider(
-                  min: 1,
-                  max: 15,
-                  divisions: 14,
-                  value: settings.cooldownMinutes.toDouble(),
-                  onChanged: (value) {
-                    controller.updateSettings(cooldownMinutes: value.round());
-                  },
-                ),
-              ),
               const SizedBox(height: 12),
               const Text(
                 'Rules, notification copy, and usage stay on this device. Recenter has no account and no backend.',

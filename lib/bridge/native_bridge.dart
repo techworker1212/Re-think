@@ -33,6 +33,7 @@ class NativeBridge {
         platformAppId: rule.platformAppId,
         displayLabel: rule.displayLabel,
         limitMinutes: rule.limitMinutes,
+        unlockMinutes: rule.unlockMinutes,
         notificationTitle: rule.resolvedTitle,
         notificationBody: rule.resolvedBody,
         enabled: rule.enabled,
@@ -63,7 +64,6 @@ class NativeBridge {
     return _api.saveSettings(
       NativeSettings(
         defaultLimitMinutes: settings.defaultLimitMinutes,
-        cooldownMinutes: settings.cooldownMinutes,
       ),
     );
   }

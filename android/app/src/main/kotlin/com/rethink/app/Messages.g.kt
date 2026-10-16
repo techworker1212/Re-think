@@ -198,6 +198,7 @@ data class NativeAppRule (
   val platformAppId: String,
   val displayLabel: String,
   val limitMinutes: Long,
+  val unlockMinutes: Long,
   val notificationTitle: String,
   val notificationBody: String,
   val enabled: Boolean
@@ -209,10 +210,11 @@ data class NativeAppRule (
       val platformAppId = pigeonVar_list[1] as String
       val displayLabel = pigeonVar_list[2] as String
       val limitMinutes = pigeonVar_list[3] as Long
-      val notificationTitle = pigeonVar_list[4] as String
-      val notificationBody = pigeonVar_list[5] as String
-      val enabled = pigeonVar_list[6] as Boolean
-      return NativeAppRule(id, platformAppId, displayLabel, limitMinutes, notificationTitle, notificationBody, enabled)
+      val unlockMinutes = pigeonVar_list[4] as Long
+      val notificationTitle = pigeonVar_list[5] as String
+      val notificationBody = pigeonVar_list[6] as String
+      val enabled = pigeonVar_list[7] as Boolean
+      return NativeAppRule(id, platformAppId, displayLabel, limitMinutes, unlockMinutes, notificationTitle, notificationBody, enabled)
     }
   }
   fun toList(): List<Any?> {
@@ -221,6 +223,7 @@ data class NativeAppRule (
       platformAppId,
       displayLabel,
       limitMinutes,
+      unlockMinutes,
       notificationTitle,
       notificationBody,
       enabled,
@@ -234,7 +237,7 @@ data class NativeAppRule (
       return true
     }
     val other = other as NativeAppRule
-    return MessagesPigeonUtils.deepEquals(this.id, other.id) && MessagesPigeonUtils.deepEquals(this.platformAppId, other.platformAppId) && MessagesPigeonUtils.deepEquals(this.displayLabel, other.displayLabel) && MessagesPigeonUtils.deepEquals(this.limitMinutes, other.limitMinutes) && MessagesPigeonUtils.deepEquals(this.notificationTitle, other.notificationTitle) && MessagesPigeonUtils.deepEquals(this.notificationBody, other.notificationBody) && MessagesPigeonUtils.deepEquals(this.enabled, other.enabled)
+    return MessagesPigeonUtils.deepEquals(this.id, other.id) && MessagesPigeonUtils.deepEquals(this.platformAppId, other.platformAppId) && MessagesPigeonUtils.deepEquals(this.displayLabel, other.displayLabel) && MessagesPigeonUtils.deepEquals(this.limitMinutes, other.limitMinutes) && MessagesPigeonUtils.deepEquals(this.unlockMinutes, other.unlockMinutes) && MessagesPigeonUtils.deepEquals(this.notificationTitle, other.notificationTitle) && MessagesPigeonUtils.deepEquals(this.notificationBody, other.notificationBody) && MessagesPigeonUtils.deepEquals(this.enabled, other.enabled)
   }
 
   override fun hashCode(): Int {
@@ -243,6 +246,7 @@ data class NativeAppRule (
     result = 31 * result + MessagesPigeonUtils.deepHash(this.platformAppId)
     result = 31 * result + MessagesPigeonUtils.deepHash(this.displayLabel)
     result = 31 * result + MessagesPigeonUtils.deepHash(this.limitMinutes)
+    result = 31 * result + MessagesPigeonUtils.deepHash(this.unlockMinutes)
     result = 31 * result + MessagesPigeonUtils.deepHash(this.notificationTitle)
     result = 31 * result + MessagesPigeonUtils.deepHash(this.notificationBody)
     result = 31 * result + MessagesPigeonUtils.deepHash(this.enabled)
@@ -378,21 +382,18 @@ data class MonitoringStatus (
 
 /** Generated class from Pigeon that represents data sent in messages. */
 data class NativeSettings (
-  val defaultLimitMinutes: Long,
-  val cooldownMinutes: Long
+  val defaultLimitMinutes: Long
 )
  {
   companion object {
     fun fromList(pigeonVar_list: List<Any?>): NativeSettings {
       val defaultLimitMinutes = pigeonVar_list[0] as Long
-      val cooldownMinutes = pigeonVar_list[1] as Long
-      return NativeSettings(defaultLimitMinutes, cooldownMinutes)
+      return NativeSettings(defaultLimitMinutes)
     }
   }
   fun toList(): List<Any?> {
     return listOf(
       defaultLimitMinutes,
-      cooldownMinutes,
     )
   }
   override fun equals(other: Any?): Boolean {
@@ -403,13 +404,12 @@ data class NativeSettings (
       return true
     }
     val other = other as NativeSettings
-    return MessagesPigeonUtils.deepEquals(this.defaultLimitMinutes, other.defaultLimitMinutes) && MessagesPigeonUtils.deepEquals(this.cooldownMinutes, other.cooldownMinutes)
+    return MessagesPigeonUtils.deepEquals(this.defaultLimitMinutes, other.defaultLimitMinutes)
   }
 
   override fun hashCode(): Int {
     var result = javaClass.hashCode()
     result = 31 * result + MessagesPigeonUtils.deepHash(this.defaultLimitMinutes)
-    result = 31 * result + MessagesPigeonUtils.deepHash(this.cooldownMinutes)
     return result
   }
 }
