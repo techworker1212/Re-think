@@ -25,6 +25,7 @@ enum RuleScheduler {
   static func arm(_ rule: StoredRule, thresholdMinutes: Int, startingNow: Bool) throws {
     let center = DeviceActivityCenter()
     let name = activityName(rule.id)
+    RuleStore.shared.markRearming(rule.id)
     center.stopMonitoring([name])
 
     let event = DeviceActivityEvent(
@@ -48,6 +49,7 @@ enum RuleScheduler {
   }
 
   static func disarm(_ ruleId: String) {
+    RuleStore.shared.markRearming(ruleId)
     DeviceActivityCenter().stopMonitoring([activityName(ruleId)])
     clearShield(ruleId)
   }
@@ -78,6 +80,10 @@ enum RuleScheduler {
 
   /// Lifts the shield and re-arms the rule so the next warning comes after the cool-down.
   static func unlock(_ ruleId: String, store: RuleStore = .shared) {
+    // Record the unlock window first, so any threshold event that races with the re-arm
+    // below is ignored instead of re-blocking the app the user just unlocked.
+    let cooldown = TimeInterval(store.cooldownMinutes * 60)
+    store.setUnlockedUntil(Date().addingTimeInterval(cooldown), for: ruleId)
     clearShield(ruleId)
     guard store.monitoring, let rule = store.rule(id: ruleId), rule.enabled else { return }
     try? arm(rule, thresholdMinutes: store.cooldownMinutes, startingNow: true)

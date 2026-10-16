@@ -17,7 +17,8 @@ class DeviceActivityMonitorExtension: DeviceActivityMonitor {
     guard event == RuleScheduler.limitEvent,
       store.monitoring,
       let rule = store.rule(id: activity.rawValue),
-      rule.enabled
+      rule.enabled,
+      !store.isUnlocked(rule.id)
     else { return }
 
     store.recordInterruption()
@@ -30,7 +31,9 @@ class DeviceActivityMonitorExtension: DeviceActivityMonitor {
     super.intervalDidEnd(for: activity)
     guard store.monitoring,
       let rule = store.rule(id: activity.rawValue),
-      rule.enabled
+      rule.enabled,
+      // Recenter stopped this monitor itself to restart it (save, unlock): not a real end.
+      !store.isRearming(rule.id)
     else { return }
     // A one-off window (first arm, or after an unlock) hands over to the daily window.
     // The shield stays until the user unlocks, as on Android.

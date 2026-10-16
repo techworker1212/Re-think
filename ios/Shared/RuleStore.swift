@@ -86,6 +86,33 @@ final class RuleStore {
     set { defaults.set(newValue, forKey: Keys.cooldown) }
   }
 
+  /// The rule is unlocked (no warnings or shields) until this time.
+  func unlockedUntil(_ ruleId: String) -> Date? {
+    defaults.object(forKey: Keys.unlockedUntil + ruleId) as? Date
+  }
+
+  func setUnlockedUntil(_ date: Date?, for ruleId: String) {
+    defaults.set(date, forKey: Keys.unlockedUntil + ruleId)
+  }
+
+  /// True during an unlock. The 15-second margin means the event that ends the cool-down
+  /// is never mistaken for one inside it, even if iOS delivers it slightly early.
+  func isUnlocked(_ ruleId: String, at now: Date = Date()) -> Bool {
+    guard let until = unlockedUntil(ruleId) else { return false }
+    return now < until.addingTimeInterval(-15)
+  }
+
+  /// Recenter is about to stop and restart this rule's monitor. iOS reports that stop as
+  /// "interval ended", which must not be mistaken for the real end of a window.
+  func markRearming(_ ruleId: String) {
+    defaults.set(Date(), forKey: Keys.rearmingAt + ruleId)
+  }
+
+  func isRearming(_ ruleId: String, at now: Date = Date()) -> Bool {
+    guard let at = defaults.object(forKey: Keys.rearmingAt + ruleId) as? Date else { return false }
+    return now.timeIntervalSince(at) < 30
+  }
+
   var interruptionsToday: Int {
     guard defaults.string(forKey: Keys.interruptionDay) == Self.today() else { return 0 }
     return defaults.integer(forKey: Keys.interruptions)
@@ -110,5 +137,7 @@ final class RuleStore {
     static let cooldown = "cooldownMinutes"
     static let interruptions = "interruptions"
     static let interruptionDay = "interruptionDay"
+    static let unlockedUntil = "unlockedUntil."
+    static let rearmingAt = "rearmingAt."
   }
 }
