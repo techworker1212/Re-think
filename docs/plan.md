@@ -224,3 +224,11 @@ Website blocking, parental/child Family Sharing, accounts/sync, Android Accessib
   `app-store-connect`, destination `export`) succeeded. It's signed with Apple Distribution, and all
   4 bundles carry the family-controls and App Group entitlements. Nothing uploaded yet.
 - Next: App Store Connect app record, then upload to TestFlight, test, then submit for review.
+
+## Update (2026-10-15): first TestFlight upload
+- Version 1.0.0 (build 1) uploaded to App Store Connect. `ITSAppUsesNonExemptEncryption = false`
+  is in Info.plist, so there's no export-compliance prompt.
+- Every future upload needs a higher build number: bump `version:` in pubspec.yaml
+  (e.g. `1.0.0+2`).
+- Upload: archive as above, then `xcodebuild -exportArchive` with
+  `build/ios/archive/UploadOptions.plist` (method `app-store-connect`, destination `upload`).
