@@ -120,6 +120,7 @@ class MainActivity : FlutterActivity() {
         override fun getMonitoringStatus() = MonitoringStatus(
             running = MonitorService.running,
             interruptionsToday = store.interruptionsToday().toLong(),
+            interruptionsByRule = store.interruptionsByRule().mapValues { it.value.toLong() },
         )
 
         override fun listInstalledApps(): List<InstalledApp> {

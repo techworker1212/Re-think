@@ -141,15 +141,26 @@ final class RuleStore {
     return now.timeIntervalSince(at) < 30
   }
 
-  var interruptionsToday: Int {
-    guard defaults.string(forKey: Keys.interruptionDay) == Self.today() else { return 0 }
-    return defaults.integer(forKey: Keys.interruptions)
+  /// Today's interruptions per rule id. Counts from earlier days read as empty.
+  var interruptionsByRule: [String: Int] {
+    guard defaults.string(forKey: Keys.interruptionDay) == Self.today() else { return [:] }
+    return defaults.dictionary(forKey: Keys.interruptionsByRule) as? [String: Int] ?? [:]
   }
 
-  func recordInterruption() {
-    let count = interruptionsToday + 1
+  var interruptionsToday: Int {
+    interruptionsByRule.values.reduce(0, +)
+  }
+
+  func recordInterruption(ruleId: String) {
+    var counts = interruptionsByRule
+    counts[ruleId, default: 0] += 1
     defaults.set(Self.today(), forKey: Keys.interruptionDay)
-    defaults.set(count, forKey: Keys.interruptions)
+    defaults.set(counts, forKey: Keys.interruptionsByRule)
+  }
+
+  /// A new day: lift this rule's shield and forget any unlock still running.
+  func startNewDay(for ruleId: String) {
+    setUnlockedUntil(nil, for: ruleId)
   }
 
   private static func today() -> String {
@@ -162,7 +173,7 @@ final class RuleStore {
   private enum Keys {
     static let rules = "rules"
     static let monitoring = "monitoring"
-    static let interruptions = "interruptions"
+    static let interruptionsByRule = "interruptionsByRule"
     static let interruptionDay = "interruptionDay"
     static let unlockedUntil = "unlockedUntil."
     static let rearmingAt = "rearmingAt."

@@ -101,17 +101,37 @@ class RuleStore(context: Context) {
             .apply()
     }
 
-    fun interruptionsToday(): Int {
-        if (prefs.getString(KEY_INTERRUPTION_DAY, null) != today()) return 0
-        return prefs.getInt(KEY_INTERRUPTIONS, 0)
+    /** Today's interruptions per rule id. Counts from earlier days read as empty. */
+    fun interruptionsByRule(): Map<String, Int> {
+        if (prefs.getString(KEY_INTERRUPTION_DAY, null) != today()) return emptyMap()
+        val json = JSONObject(prefs.getString(KEY_INTERRUPTIONS_BY_RULE, null) ?: "{}")
+        return json.keys().asSequence().associateWith { json.getInt(it) }
     }
 
-    fun recordInterruption() {
-        val count = interruptionsToday() + 1
+    fun interruptionsToday(): Int = interruptionsByRule().values.sum()
+
+    fun recordInterruption(ruleId: String) {
+        val counts = interruptionsByRule().toMutableMap()
+        counts[ruleId] = (counts[ruleId] ?: 0) + 1
         prefs.edit()
             .putString(KEY_INTERRUPTION_DAY, today())
-            .putInt(KEY_INTERRUPTIONS, count)
+            .putString(KEY_INTERRUPTIONS_BY_RULE, JSONObject(counts as Map<*, *>).toString())
             .apply()
+    }
+
+    /**
+     * Once per day: lift every block and forget running unlocks, so each app starts the
+     * day with its full limit. Returns true when a new day began.
+     */
+    fun startNewDayIfNeeded(): Boolean {
+        val today = today()
+        if (prefs.getString(KEY_ACTIVE_DAY, null) == today) return false
+        val editor = prefs.edit()
+            .putString(KEY_ACTIVE_DAY, today)
+            .putStringSet(KEY_BLOCKED, emptySet())
+        rules().forEach { editor.remove(cooldownKey(it.id)) }
+        editor.apply()
+        return true
     }
 
     private fun today() = LocalDate.now().toString()
@@ -123,7 +143,8 @@ class RuleStore(context: Context) {
         private const val KEY_MONITORING = "monitoring"
         const val DEFAULT_UNLOCK_MINUTES = 2
         private const val KEY_BLOCKED = "blocked"
-        private const val KEY_INTERRUPTIONS = "interruptions"
+        private const val KEY_ACTIVE_DAY = "activeDay"
+        private const val KEY_INTERRUPTIONS_BY_RULE = "interruptionsByRule"
         private const val KEY_INTERRUPTION_DAY = "interruptionDay"
     }
 }

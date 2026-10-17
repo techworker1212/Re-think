@@ -331,35 +331,41 @@ struct InstalledApp: Hashable {
 struct MonitoringStatus: Hashable {
   var running: Bool
   var interruptionsToday: Int64
+  /// Today's interruptions keyed by rule id.
+  var interruptionsByRule: [String: Int64]
 
 
   // swift-format-ignore: AlwaysUseLowerCamelCase
   static func fromList(_ pigeonVar_list: [Any?]) -> MonitoringStatus? {
     let running = pigeonVar_list[0] as! Bool
     let interruptionsToday = pigeonVar_list[1] as! Int64
+    let interruptionsByRule = pigeonVar_list[2] as! [String: Int64]
 
     return MonitoringStatus(
       running: running,
-      interruptionsToday: interruptionsToday
+      interruptionsToday: interruptionsToday,
+      interruptionsByRule: interruptionsByRule
     )
   }
   func toList() -> [Any?] {
     return [
       running,
       interruptionsToday,
+      interruptionsByRule,
     ]
   }
   static func == (lhs: MonitoringStatus, rhs: MonitoringStatus) -> Bool {
     if Swift.type(of: lhs) != Swift.type(of: rhs) {
       return false
     }
-    return deepEqualsMessages(lhs.running, rhs.running) && deepEqualsMessages(lhs.interruptionsToday, rhs.interruptionsToday)
+    return deepEqualsMessages(lhs.running, rhs.running) && deepEqualsMessages(lhs.interruptionsToday, rhs.interruptionsToday) && deepEqualsMessages(lhs.interruptionsByRule, rhs.interruptionsByRule)
   }
 
   func hash(into hasher: inout Hasher) {
     hasher.combine("MonitoringStatus")
     deepHashMessages(value: running, hasher: &hasher)
     deepHashMessages(value: interruptionsToday, hasher: &hasher)
+    deepHashMessages(value: interruptionsByRule, hasher: &hasher)
   }
 }
 

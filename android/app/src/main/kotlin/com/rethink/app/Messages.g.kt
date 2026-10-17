@@ -345,20 +345,24 @@ data class InstalledApp (
 /** Generated class from Pigeon that represents data sent in messages. */
 data class MonitoringStatus (
   val running: Boolean,
-  val interruptionsToday: Long
+  val interruptionsToday: Long,
+  /** Today's interruptions keyed by rule id. */
+  val interruptionsByRule: Map<String, Long>
 )
  {
   companion object {
     fun fromList(pigeonVar_list: List<Any?>): MonitoringStatus {
       val running = pigeonVar_list[0] as Boolean
       val interruptionsToday = pigeonVar_list[1] as Long
-      return MonitoringStatus(running, interruptionsToday)
+      val interruptionsByRule = pigeonVar_list[2] as Map<String, Long>
+      return MonitoringStatus(running, interruptionsToday, interruptionsByRule)
     }
   }
   fun toList(): List<Any?> {
     return listOf(
       running,
       interruptionsToday,
+      interruptionsByRule,
     )
   }
   override fun equals(other: Any?): Boolean {
@@ -369,13 +373,14 @@ data class MonitoringStatus (
       return true
     }
     val other = other as MonitoringStatus
-    return MessagesPigeonUtils.deepEquals(this.running, other.running) && MessagesPigeonUtils.deepEquals(this.interruptionsToday, other.interruptionsToday)
+    return MessagesPigeonUtils.deepEquals(this.running, other.running) && MessagesPigeonUtils.deepEquals(this.interruptionsToday, other.interruptionsToday) && MessagesPigeonUtils.deepEquals(this.interruptionsByRule, other.interruptionsByRule)
   }
 
   override fun hashCode(): Int {
     var result = javaClass.hashCode()
     result = 31 * result + MessagesPigeonUtils.deepHash(this.running)
     result = 31 * result + MessagesPigeonUtils.deepHash(this.interruptionsToday)
+    result = 31 * result + MessagesPigeonUtils.deepHash(this.interruptionsByRule)
     return result
   }
 }

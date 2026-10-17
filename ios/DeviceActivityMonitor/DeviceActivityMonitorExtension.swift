@@ -21,26 +21,41 @@ class DeviceActivityMonitorExtension: DeviceActivityMonitor {
       !store.isUnlocked(rule.id)
     else { return }
 
-    store.recordInterruption()
+    store.recordInterruption(ruleId: rule.id)
     postWarning(for: rule)
     sleep(warningSeconds)
     RuleScheduler.shield(rule)
   }
 
+  /// The daily window starting is midnight: every rule starts the day unblocked.
+  override func intervalDidStart(for activity: DeviceActivityName) {
+    super.intervalDidStart(for: activity)
+    // Only the repeating daily window marks a new day. One-off windows also "start" when
+    // Recenter arms a rule mid-day, and must not lift a block the user hasn't unlocked.
+    guard DeviceActivityCenter().schedule(for: activity)?.repeats == true else { return }
+    resetForNewDay(activity.rawValue)
+  }
+
   override func intervalDidEnd(for activity: DeviceActivityName) {
     super.intervalDidEnd(for: activity)
+    // Recenter stopped this monitor itself to restart it (save, unlock): not a real end.
+    guard !store.isRearming(activity.rawValue) else { return }
+    // A window only really ends at the end of the day, so the day's block ends with it.
+    resetForNewDay(activity.rawValue)
     guard store.monitoring,
       let rule = store.rule(id: activity.rawValue),
-      rule.enabled,
-      // Recenter stopped this monitor itself to restart it (save, unlock): not a real end.
-      !store.isRearming(rule.id)
+      rule.enabled
     else { return }
     // A one-off window (first arm, or after an unlock) hands over to the daily window.
-    // The shield stays until the user unlocks, as on Android.
     let schedule = DeviceActivityCenter().schedule(for: activity)
     if schedule?.repeats != true {
       try? RuleScheduler.arm(rule, thresholdMinutes: rule.limitMinutes, startingNow: false)
     }
+  }
+
+  private func resetForNewDay(_ ruleId: String) {
+    store.startNewDay(for: ruleId)
+    RuleScheduler.clearShield(ruleId)
   }
 
   private func postWarning(for rule: StoredRule) {

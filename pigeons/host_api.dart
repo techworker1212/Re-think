@@ -60,10 +60,14 @@ class MonitoringStatus {
   MonitoringStatus({
     required this.running,
     required this.interruptionsToday,
+    required this.interruptionsByRule,
   });
 
   bool running;
   int interruptionsToday;
+
+  /// Today's interruptions keyed by rule id.
+  Map<String, int> interruptionsByRule;
 }
 
 class NativeSettings {

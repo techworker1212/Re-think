@@ -79,6 +79,11 @@ class MonitorService : Service() {
             return
         }
         updateForegroundNotification(force = false)
+        if (store.startNewDayIfNeeded()) {
+            // Midnight: everyone starts the day with a clean slate.
+            sessions.clear()
+            pending = null
+        }
         val current = readForegroundPackage(now)
         val rules = store.rules().filter { it.enabled }
         val rule = rules.firstOrNull { it.packageName == current }
@@ -101,7 +106,7 @@ class MonitorService : Service() {
             pending?.ruleId == rule.id -> Unit
             now < store.cooldownUntil(rule.id) -> Unit
             now - session.startedAt >= rule.limitMinutes * 60_000L -> {
-                store.recordInterruption()
+                store.recordInterruption(rule.id)
                 Notifications.showWarning(this, rule)
                 pending = PendingPause(rule.id, now + Notifications.WARNING_SECONDS * 1000L)
             }

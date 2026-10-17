@@ -281,16 +281,21 @@ class MonitoringStatus {
   MonitoringStatus({
     required this.running,
     required this.interruptionsToday,
+    required this.interruptionsByRule,
   });
 
   bool running;
 
   int interruptionsToday;
 
+  /// Today's interruptions keyed by rule id.
+  Map<String, int> interruptionsByRule;
+
   List<Object?> _toList() {
     return <Object?>[
       running,
       interruptionsToday,
+      interruptionsByRule,
     ];
   }
 
@@ -302,6 +307,7 @@ class MonitoringStatus {
     return MonitoringStatus(
       running: result[0]! as bool,
       interruptionsToday: result[1]! as int,
+      interruptionsByRule: (result[2]! as Map<Object?, Object?>).cast<String, int>(),
     );
   }
 
@@ -314,7 +320,7 @@ class MonitoringStatus {
     if (identical(this, other)) {
       return true;
     }
-    return _deepEquals(running, other.running) && _deepEquals(interruptionsToday, other.interruptionsToday);
+    return _deepEquals(running, other.running) && _deepEquals(interruptionsToday, other.interruptionsToday) && _deepEquals(interruptionsByRule, other.interruptionsByRule);
   }
 
   @override

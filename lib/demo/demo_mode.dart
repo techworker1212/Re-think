@@ -41,7 +41,11 @@ class DemoBridge extends NativeBridge {
 
   @override
   Future<MonitoringStatus> monitoring() async =>
-      MonitoringStatus(running: true, interruptionsToday: 3);
+      MonitoringStatus(
+        running: true,
+        interruptionsToday: 3,
+        interruptionsByRule: {'demo_instagram': 2, 'demo_tiktok': 1},
+      );
 
   @override
   Future<List<ListedApp>> installedApps() async => const [];

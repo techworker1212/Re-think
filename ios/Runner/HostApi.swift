@@ -91,7 +91,8 @@ final class HostApi: RecenterHostApi {
   func getMonitoringStatus() throws -> MonitoringStatus {
     MonitoringStatus(
       running: store.monitoring && !DeviceActivityCenter().activities.isEmpty,
-      interruptionsToday: Int64(store.interruptionsToday)
+      interruptionsToday: Int64(store.interruptionsToday),
+      interruptionsByRule: store.interruptionsByRule.mapValues { Int64($0) }
     )
   }
 

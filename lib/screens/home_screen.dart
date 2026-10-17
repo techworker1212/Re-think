@@ -53,13 +53,7 @@ class HomeScreen extends StatelessWidget {
               if (controller.missingPermissions.isNotEmpty)
                 _PermissionBanner(controller: controller),
               const SizedBox(height: 8),
-              Card(
-                child: ListTile(
-                  leading: const Icon(Icons.notifications_active_outlined),
-                  title: Text('${controller.interruptionsToday}'),
-                  subtitle: const Text('Interruptions today'),
-                ),
-              ),
+              _InterruptionsCard(controller: controller),
               if (controller.errorMessage != null) ...[
                 const SizedBox(height: 8),
                 Text(
@@ -116,6 +110,52 @@ class HomeScreen extends StatelessWidget {
     return Navigator.of(context).push(
       MaterialPageRoute(
         builder: (_) => RuleEditorScreen(controller: controller, existing: rule),
+      ),
+    );
+  }
+}
+
+/// Today's total; tap to see how many times each app was interrupted.
+class _InterruptionsCard extends StatelessWidget {
+  const _InterruptionsCard({required this.controller});
+
+  final AppController controller;
+
+  @override
+  Widget build(BuildContext context) {
+    final labels = {for (final rule in controller.rules) rule.id: rule.displayLabel};
+    final perApp = controller.interruptionsByRule.entries
+        .where((entry) => entry.value > 0)
+        .map((entry) => (label: labels[entry.key] ?? 'Removed app', count: entry.value))
+        .toList()
+      ..sort((a, b) => b.count.compareTo(a.count));
+
+    return Card(
+      clipBehavior: Clip.antiAlias,
+      child: ExpansionTile(
+        shape: const Border(),
+        leading: const Icon(Icons.notifications_active_outlined),
+        title: Text('${controller.interruptionsToday}'),
+        subtitle: const Text('Interruptions today'),
+        childrenPadding: const EdgeInsets.only(bottom: 8),
+        children: perApp.isEmpty
+            ? const [
+                ListTile(
+                  dense: true,
+                  title: Text('No interruptions yet today.'),
+                ),
+              ]
+            : [
+                for (final app in perApp)
+                  ListTile(
+                    dense: true,
+                    title: Text(app.label),
+                    trailing: Text(
+                      '${app.count}',
+                      style: Theme.of(context).textTheme.titleMedium,
+                    ),
+                  ),
+              ],
       ),
     );
   }

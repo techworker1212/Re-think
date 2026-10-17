@@ -25,6 +25,9 @@ class AppController extends ChangeNotifier {
     batteryExemption: false,
   );
   int interruptionsToday = 0;
+
+  /// Today's interruptions keyed by rule id.
+  Map<String, int> interruptionsByRule = const {};
   bool busy = false;
   String? errorMessage;
 
@@ -72,6 +75,7 @@ class AppController extends ChangeNotifier {
       permissions = await _bridge.status();
       final status = await _bridge.monitoring();
       interruptionsToday = status.interruptionsToday;
+      interruptionsByRule = status.interruptionsByRule;
       if (settings.monitoringEnabled && !status.running) {
         await _syncAllRules();
         await _bridge.start();
@@ -121,6 +125,7 @@ class AppController extends ChangeNotifier {
     final status = await _safeMonitoringStatus();
     if (status != null) {
       interruptionsToday = status.interruptionsToday;
+      interruptionsByRule = status.interruptionsByRule;
     }
     notifyListeners();
   }
